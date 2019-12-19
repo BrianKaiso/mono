@@ -18,7 +18,7 @@ session_destroy();
 
 //処理後、index.phpへリダイレクト
 redirect("index.php");
-//header("Location: login.php");
+//header("Location: user_login.php");
 exit();
 
 ?>

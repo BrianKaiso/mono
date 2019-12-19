@@ -38,7 +38,7 @@ if(password_verify($lpw, $val["lpw"])){
     }else{
       //Login失敗時(Logout経由)
      $_SESSION["false"]=1;
-     redirect("login.php");
+     redirect("user_login.php");
     }
-    
+  }
     exit();
