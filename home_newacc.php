@@ -8,6 +8,10 @@
    // html header include
    include(__DIR__.'/include/home/header.php'); 
 
+   if(isset($_SESSION["chk_ssid"])){
+     redirect("home_mypage.php");
+    }
+
 ?>
 
 <h1>販売者様(セラー)新規登録</h1>
@@ -458,7 +462,7 @@ function newAccAct(){
         caub4.insertAdjacentHTML('beforeend', "</div>"); // エラーメッセージ後半部
     }else if(result===true){
         console.log("Ajax登録成功");
-        window.location.href = 'home.php'; // login.phpに遷移し、成功メッセージを表示
+        window.location.href = 'home_login.php'; // login.phpに遷移し、成功メッセージを表示
         // caub4.insertAdjacentHTML('afterbegin', "<div class=\"cau2\">"); // エラーメッセージ前半部
         // document.querySelector('.cau2').insertAdjacentHTML('afterbegin', result); 
         // caub4.insertAdjacentHTML('beforeend', "</div>"); // エラーメッセージ後半部
@@ -475,7 +479,7 @@ function newAccAct(){
 
 
 
-<p>すでにアカウントをお持ちですか？ログインは<a href="home.php">こちら</a></p>
+<p>すでにアカウントをお持ちですか？ログインは<a href="home_login.php">こちら</a></p>
 </div>
 <!-- セラー新規登録 ここまで --> 
 
