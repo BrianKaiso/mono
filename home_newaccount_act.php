@@ -17,8 +17,11 @@ $phone = filter_input( INPUT_POST, "phone" );
 $email = filter_input( INPUT_POST, "email" ); 
 $pwd = filter_input( INPUT_POST, "pwd" ); 
 
-// var_dump($pwd);
-// exit;
+if(!isset($name) || !isset($name_in_charge) || !isset($post1) || !isset($post2) || !isset($pref) || !isset($city) || !isset($address) || !isset($phone) || !isset($email) || !isset($pwd)){
+  redirect("home.php");
+  //echo json_encode($result); 
+  exit;
+} 
 
 // 郵便番号をハイフンでつなぐ
 //$post = $post1."-".$post2;
@@ -27,6 +30,9 @@ $data = [$name,$name_in_charge,$post1,$post2,$pref,$city,$address,$phone,$email,
 
 // htmlタグエスケープ hCheck() > functions.phpに用意したユーザー定義関数(htmlspeciachar)
 $data = hCheck($data);
+
+// var_dump($data[9]);
+// exit;
 
 // echo json_encode($data); 
 // exit; // newaccount.phpでエラーメッセージを表示して終了
@@ -65,6 +71,12 @@ if($status==false) {
    $sql="INSERT INTO mst_creater(c_id,c_pass,name,name_in_charge,postal1,postal2,pref,city,address,tel) VALUES(:email,:lpw,:name,:name_in_charge,:postal1,:postal2,:pref,:city,:address,:tel)";
 
    $stmt = $pdo->prepare($sql);
+
+  //  echo "dataに入れるPWD","<br />";
+  //  var_dump($data[9]);
+  //  $test=password_hash($data[9], PASSWORD_DEFAULT);
+  //  var_dump($test);
+  //  exit;
 
    $stmt->bindValue(':lpw', password_hash($data[9], PASSWORD_DEFAULT), PDO::PARAM_STR); // hash化
    $stmt->bindValue(':name', $data[0], PDO::PARAM_STR); 
