@@ -3,7 +3,7 @@ ini_set('display_errors', "On");
 error_reporting(E_ALL);
 
 session_start();
-include('../functions/functions.php');
+include(__DIR__.'functions/home/functions.php');
 ?>
 
 <!DOCTYPE html>
