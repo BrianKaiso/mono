@@ -11,7 +11,13 @@ parse_str($query);
 //商品id名：$p_code
 
 // //２．データ登録SQL作成
-$stmt = $pdo->prepare("SELECT * FROM mst_product WHERE p_code = $p_code");
+$stmt_p = $pdo->prepare("SELECT * FROM mst_product WHERE p_code = $p_code");
+$status_p = $stmt_p->execute();
+foreach ($stmt_p as $r_p) {
+  // データベースのフィールド名で出力。
+  // echo $row['p_name'];みたいな感じで書いたらHTML内に持ってこれるで。
+  }
+$stmt = $pdo->prepare("SELECT * FROM mst_asset WHERE a_code = $a_code");
 $status = $stmt->execute();
 foreach ($stmt as $r) {
   // データベースのフィールド名で出力。
@@ -29,6 +35,7 @@ foreach ($stmt as $r) {
     <script src="jquery-2.1.3.min.js"></script>
     <link rel="stylesheet" href="reset.css" />
     <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="video.css" />
     <title>サービス名</title>
 </head>
 <body>
@@ -79,7 +86,14 @@ foreach ($stmt as $r) {
 
  -->
    <h1>商品トップコンテンツ (動画 or 写真)</h1>
-   <?php echo'<img src="upload/'.$r["p_img"].'">'?>
+
+   <!-- 動画表示 -->
+   <video id="video" controls>
+     <?php
+      echo'<source src="upload/'.$r["a_path"].'"type="video/mp4;" codecs="avc1.42E01E, mp4a.40.2">'
+     ?>
+   </video>
+
    <ul>
     <li><a href="nice.php">いいね！</a></li>
     <li><a href="follow.php">商品をフォロー</a></li>
@@ -96,10 +110,10 @@ foreach ($stmt as $r) {
    4. ニュース 例 3件だけ表示
  --> 
   <section> 
-    <h2><?php echo $r['p_name'];?></h2> <!-- 1. 商品の名称・品名・品番など  -->
+    <h2><?php echo $r_p['p_name'];?></h2> <!-- 1. 商品の名称・品名・品番など  -->
     <a href="products.php?shop=aaa&items=xxx">もっと見る</a> <!-- 商品詳細ページへのリンク  -->
     <!-- 商品詳細  -->
-    <p><?php echo $r['p_comment']?></p>
+    <p><?php echo $r_p['p_comment']?></p>
     <p>追加画像など・・・</p>
   </section>
  
@@ -142,6 +156,19 @@ foreach ($stmt as $r) {
         }
       });
     });
+
+    // 動画の縦横をmst_assetのa_lawの値によってcssの条件を分岐
+    // a_law=1:縦、a_law=2:横
+    let a_law = <?php echo $r['a_lw'];?>;
+    // console.log(a_law);
+    if(a_law == 1){
+      var video_law = document.getElementById("video");
+      video_law.id = "video_1";
+    }else if(a_law == 2){
+      var video_law = document.getElementById("video");
+      video_law.id = "video_2";
+    }
+
   </script>
 
 </body>

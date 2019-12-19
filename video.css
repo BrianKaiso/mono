@@ -1,0 +1,8 @@
+#video_1 {
+  width: 100vw;
+  height: 100vh;
+}
+#video_2 {
+  width: 100vw;
+  height: auto;
+}
