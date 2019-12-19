@@ -13,7 +13,6 @@ ini_set('display_errors', "On");
 error_reporting(E_ALL);
 
 session_start();
-include('./funcs.php');
 
     $upload = $_FILES['upload'];
     $a_lw = $_POST['a_lw'];
