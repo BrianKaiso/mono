@@ -12,15 +12,13 @@
 ini_set('display_errors', "On");
 error_reporting(E_ALL);
 
-session_start();
-
     $upload = $_FILES['upload'];
     $a_lw = $_POST['a_lw'];
 
     if($upload['size'] > 0){
-        if($upload['size'] > 50000000){
-            echo '動画のサイズが大きすぎます';
-        }else{
+        // if($upload['size'] > 50000000){
+        //     echo '動画のサイズが大きすぎます';
+        // }else{
         move_uploaded_file($upload['tmp_name'],'./upload/'.$upload['name']);
         echo '<img src="./upload/'.$upload['name'].'">';
         echo '<br/>';
