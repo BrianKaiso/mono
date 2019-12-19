@@ -90,7 +90,7 @@ foreach ($stmt as $r) {
    <!-- 動画表示 -->
    <video id="video" controls>
      <?php
-      echo'<source src="upload/'.$r["a_path"].'"type="video/mp4;" codecs="avc1.42E01E, mp4a.40.2">'
+      echo'<source src="upload/'.$r["a_id"].'"type="video/mp4;" codecs="avc1.42E01E, mp4a.40.2">'
      ?>
    </video>
 
