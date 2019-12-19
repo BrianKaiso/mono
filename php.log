@@ -1,0 +1,70 @@
+[18-Dec-2019 12:41:43 UTC] PHP Notice:  Undefined index: user_id in /Applications/MAMP/htdocs/mono/goodView.php on line 30
+[18-Dec-2019 12:41:43 UTC] PHP Warning:  Illegal string offset 'id' in /Applications/MAMP/htdocs/mono/goodView.php on line 30
+[18-Dec-2019 12:41:43 UTC] PHP Notice:  Uninitialized string offset: 0 in /Applications/MAMP/htdocs/mono/goodView.php on line 30
+[18-Dec-2019 12:41:43 UTC] デバッグ：いいねした情報があるか確認
+[18-Dec-2019 12:41:43 UTC] デバッグ：ユーザーID
+[18-Dec-2019 12:41:43 UTC] デバッグ：投稿ID：
+[18-Dec-2019 12:41:43 UTC] エラー発生:SQLSTATE[HY000] [1049] Unknown database 'postonceaday'
+[18-Dec-2019 12:41:43 UTC] PHP Notice:  Undefined index: user_id in /Applications/MAMP/htdocs/mono/goodView.php on line 34
+[18-Dec-2019 12:41:43 UTC] PHP Warning:  Illegal string offset 'id' in /Applications/MAMP/htdocs/mono/goodView.php on line 34
+[18-Dec-2019 12:41:43 UTC] PHP Notice:  Uninitialized string offset: 0 in /Applications/MAMP/htdocs/mono/goodView.php on line 34
+[18-Dec-2019 12:41:43 UTC] デバッグ：いいねした情報があるか確認
+[18-Dec-2019 12:41:43 UTC] デバッグ：ユーザーID
+[18-Dec-2019 12:41:43 UTC] デバッグ：投稿ID：
+[18-Dec-2019 12:41:43 UTC] エラー発生:SQLSTATE[HY000] [1049] Unknown database 'postonceaday'
+[18-Dec-2019 12:41:43 UTC] PHP Notice:  Undefined index: user_id in /Applications/MAMP/htdocs/mono/goodView.php on line 30
+[18-Dec-2019 12:41:43 UTC] PHP Warning:  Illegal string offset 'id' in /Applications/MAMP/htdocs/mono/goodView.php on line 30
+[18-Dec-2019 12:41:43 UTC] PHP Notice:  Uninitialized string offset: 0 in /Applications/MAMP/htdocs/mono/goodView.php on line 30
+[18-Dec-2019 12:41:43 UTC] デバッグ：いいねした情報があるか確認
+[18-Dec-2019 12:41:43 UTC] デバッグ：ユーザーID
+[18-Dec-2019 12:41:43 UTC] デバッグ：投稿ID：
+[18-Dec-2019 12:41:43 UTC] エラー発生:SQLSTATE[HY000] [1049] Unknown database 'postonceaday'
+[18-Dec-2019 12:41:43 UTC] PHP Notice:  Undefined index: user_id in /Applications/MAMP/htdocs/mono/goodView.php on line 34
+[18-Dec-2019 12:41:43 UTC] PHP Warning:  Illegal string offset 'id' in /Applications/MAMP/htdocs/mono/goodView.php on line 34
+[18-Dec-2019 12:41:43 UTC] PHP Notice:  Uninitialized string offset: 0 in /Applications/MAMP/htdocs/mono/goodView.php on line 34
+[18-Dec-2019 12:41:43 UTC] デバッグ：いいねした情報があるか確認
+[18-Dec-2019 12:41:43 UTC] デバッグ：ユーザーID
+[18-Dec-2019 12:41:43 UTC] デバッグ：投稿ID：
+[18-Dec-2019 12:41:43 UTC] エラー発生:SQLSTATE[HY000] [1049] Unknown database 'postonceaday'
+[18-Dec-2019 12:41:44 UTC] PHP Notice:  Undefined index: user_id in /Applications/MAMP/htdocs/mono/goodView.php on line 30
+[18-Dec-2019 12:41:44 UTC] PHP Warning:  Illegal string offset 'id' in /Applications/MAMP/htdocs/mono/goodView.php on line 30
+[18-Dec-2019 12:41:44 UTC] PHP Notice:  Uninitialized string offset: 0 in /Applications/MAMP/htdocs/mono/goodView.php on line 30
+[18-Dec-2019 12:41:44 UTC] デバッグ：いいねした情報があるか確認
+[18-Dec-2019 12:41:44 UTC] デバッグ：ユーザーID
+[18-Dec-2019 12:41:44 UTC] デバッグ：投稿ID：
+[18-Dec-2019 12:41:44 UTC] エラー発生:SQLSTATE[HY000] [1049] Unknown database 'postonceaday'
+[18-Dec-2019 12:41:44 UTC] PHP Notice:  Undefined index: user_id in /Applications/MAMP/htdocs/mono/goodView.php on line 34
+[18-Dec-2019 12:41:44 UTC] PHP Warning:  Illegal string offset 'id' in /Applications/MAMP/htdocs/mono/goodView.php on line 34
+[18-Dec-2019 12:41:44 UTC] PHP Notice:  Uninitialized string offset: 0 in /Applications/MAMP/htdocs/mono/goodView.php on line 34
+[18-Dec-2019 12:41:44 UTC] デバッグ：いいねした情報があるか確認
+[18-Dec-2019 12:41:44 UTC] デバッグ：ユーザーID
+[18-Dec-2019 12:41:44 UTC] デバッグ：投稿ID：
+[18-Dec-2019 12:41:44 UTC] エラー発生:SQLSTATE[HY000] [1049] Unknown database 'postonceaday'
+[18-Dec-2019 12:41:44 UTC] PHP Notice:  Undefined index: user_id in /Applications/MAMP/htdocs/mono/goodView.php on line 30
+[18-Dec-2019 12:41:44 UTC] PHP Warning:  Illegal string offset 'id' in /Applications/MAMP/htdocs/mono/goodView.php on line 30
+[18-Dec-2019 12:41:44 UTC] PHP Notice:  Uninitialized string offset: 0 in /Applications/MAMP/htdocs/mono/goodView.php on line 30
+[18-Dec-2019 12:41:44 UTC] デバッグ：いいねした情報があるか確認
+[18-Dec-2019 12:41:44 UTC] デバッグ：ユーザーID
+[18-Dec-2019 12:41:44 UTC] デバッグ：投稿ID：
+[18-Dec-2019 12:41:44 UTC] エラー発生:SQLSTATE[HY000] [1049] Unknown database 'postonceaday'
+[18-Dec-2019 12:41:44 UTC] PHP Notice:  Undefined index: user_id in /Applications/MAMP/htdocs/mono/goodView.php on line 34
+[18-Dec-2019 12:41:44 UTC] PHP Warning:  Illegal string offset 'id' in /Applications/MAMP/htdocs/mono/goodView.php on line 34
+[18-Dec-2019 12:41:44 UTC] PHP Notice:  Uninitialized string offset: 0 in /Applications/MAMP/htdocs/mono/goodView.php on line 34
+[18-Dec-2019 12:41:44 UTC] デバッグ：いいねした情報があるか確認
+[18-Dec-2019 12:41:44 UTC] デバッグ：ユーザーID
+[18-Dec-2019 12:41:44 UTC] デバッグ：投稿ID：
+[18-Dec-2019 12:41:44 UTC] エラー発生:SQLSTATE[HY000] [1049] Unknown database 'postonceaday'
+[18-Dec-2019 12:41:44 UTC] PHP Notice:  Undefined index: user_id in /Applications/MAMP/htdocs/mono/goodView.php on line 30
+[18-Dec-2019 12:41:44 UTC] PHP Warning:  Illegal string offset 'id' in /Applications/MAMP/htdocs/mono/goodView.php on line 30
+[18-Dec-2019 12:41:44 UTC] PHP Notice:  Uninitialized string offset: 0 in /Applications/MAMP/htdocs/mono/goodView.php on line 30
+[18-Dec-2019 12:41:44 UTC] デバッグ：いいねした情報があるか確認
+[18-Dec-2019 12:41:44 UTC] デバッグ：ユーザーID
+[18-Dec-2019 12:41:44 UTC] デバッグ：投稿ID：
+[18-Dec-2019 12:41:44 UTC] エラー発生:SQLSTATE[HY000] [1049] Unknown database 'postonceaday'
+[18-Dec-2019 12:41:44 UTC] PHP Notice:  Undefined index: user_id in /Applications/MAMP/htdocs/mono/goodView.php on line 34
+[18-Dec-2019 12:41:44 UTC] PHP Warning:  Illegal string offset 'id' in /Applications/MAMP/htdocs/mono/goodView.php on line 34
+[18-Dec-2019 12:41:44 UTC] PHP Notice:  Uninitialized string offset: 0 in /Applications/MAMP/htdocs/mono/goodView.php on line 34
+[18-Dec-2019 12:41:44 UTC] デバッグ：いいねした情報があるか確認
+[18-Dec-2019 12:41:44 UTC] デバッグ：ユーザーID
+[18-Dec-2019 12:41:44 UTC] デバッグ：投稿ID：
+[18-Dec-2019 12:41:44 UTC] エラー発生:SQLSTATE[HY000] [1049] Unknown database 'postonceaday'
