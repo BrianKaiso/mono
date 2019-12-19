@@ -121,18 +121,22 @@ $pdo=null;
       <dt>電話番号<dt>
       <dd><input type="text" id="tel" name="tel" size="25" maxLength="16" value="<?=$r["tel"]?>" /><dd>
     </dl>
-    <button>基本情報を更新</button>
+    <button onclick=update_basic()>基本情報を更新</button>&nbsp;&nbsp;&nbsp;<span id="basicUpdated"><span>
+    <!-- 基本情報が適切に更新された際にメッセージを表示します  -->
     </fieldset>
 
     <fieldset>
       <legend>ログイン情報</legend>
       <dl>
       <dt>Email<dt>
-      <dd><input type="text" id="email" name="email" size="25" maxLength="50" value="<?=$r["c_id"]?>" /><dd>
+      <dd><input type="text" id="email" name="email" size="25" maxLength="50" value="<?=$r["c_id"]?>" /></dd>
+      <button onclick=update_email()>メールアドレスを更新</button>
+      <p id="emailUpdated"></p>
       <dt>ログインパスワード<dt>
       <dd><input type="text" id="pwd_old" name="pwd_old" size="25" maxLength="25" placeholder="現在のパスワード" /><br /><input type="text" id="pwd_new" name="pwd_new" size="25" maxLength="25" placeholder="新しいパスワード" /><dd>
       </dl>
-      <button>ログイン情報を更新</button>
+      <button onclick=update_pwd()>パスワードを更新</button>&nbsp;&nbsp;&nbsp;<span id="pwdUpdated"><span>
+      <!-- ログイン情報が適切に更新された際にメッセージを表示します  -->
      </fieldset>
     
 
@@ -142,6 +146,148 @@ $pdo=null;
 </div>
 
 </main> <!-- マイページ コンテンツここまで   -->
+
+<script>
+// 基本情報更新
+function update_basic(){
+ console.log("ボタン押したよ！");
+ //console.log($("#tel").val());
+
+ // フォームの内容を取得
+ let name_in_charge = $("#name_in_charge").val();
+ let postal1 = $("#postal1").val();
+ let postal2 = $("#postal2").val();
+ let pref = $("#pref").val();
+ let city = $("#city").val();
+ let address = $("#address").val();
+ let tel = $("#tel").val();
+
+ // Ajaxでhome/home_mypage_basicinfo_update.phpで更新処理
+ function ajax_mybasicupdate(){
+       return $.ajax({
+        type: 'post',
+        url: 'home/home_mypage_basicinfo_update.php',
+        data: {
+            name_in_charge: name_in_charge,
+            postal1:postal1,
+            postal2:postal2,
+            pref:pref,
+            city:city,
+            address:address,
+            tel:tel,
+        },
+        dataType:'html',
+       });
+    }
+    // returnでajaxの処理を返す 
+    ajax_mybasicupdate().done(function(result){
+     // result = trueの場合 = 成功
+     if(result){
+      console.log('ajax基本情報updateしました。');
+      console.log(result);
+      //console.log(`ajaxデータ= ${mycart[get_products_id]}`); 
+      //document.getElementById("basicUpdated").textContent = `(${cartNumTotal})`;
+      $("#basicUpdated").fadeIn(700).text("基本情報を更新しました。");
+      $(function(){
+      setTimeout(function(){
+        $("#basicUpdated").fadeOut(600);
+       },1900);
+     });
+     }else{
+      console.log('ajax基本情報update失敗');
+      console.log(result);
+      $("#basicUpdated").fadeIn(700).text("基本情報の更新に失敗しました。管理までお問い合わせください。");
+      $(function(){
+      setTimeout(function(){
+        $("#basicUpdated").fadeOut(600);
+       },1900);
+     });
+     }
+    }).fail(function(XMLHttpRequest, textStatus, errorThrown){
+            alert(errorThrown);
+    });
+
+} // 基本情報更新ここまで
+
+
+// Email更新
+function update_email(){
+ console.log("Email更新ボタン押したよ！");
+ 
+ // フォームの内容を取得
+ let email = $("#email").val();
+ 
+ // Ajaxでhome/home_mypage_email_update.phpで更新処理
+ function ajax_myemailupdate(){
+       return $.ajax({
+        type: 'post',
+        url: 'home/home_mypage_email_update.php',
+        data: {
+            email:email,
+        },
+        dataType:'html',
+       });
+    }
+    // returnでajaxの処理を返す 
+    ajax_myemailupdate().done(function(result){
+      // result = trueの場合 = 成功
+      console.log(result);
+
+     if(result==='used'){
+      console.log('ajaxメールアドレスすでに使用されている');
+      console.log(result);
+      $("#emailUpdated").fadeIn(700).text("入力されたメールアドレスはすでに使用されています。別のメールアドレスを入力してください。");
+      $(function(){
+      setTimeout(function(){
+        $("#emailUpdated").fadeOut(600);
+       },1900);
+     });
+     }else if(result){
+      console.log('ajax Email updateしました。');
+      console.log(result);
+      $("#emailUpdated").fadeIn(700).text("メールアドレスを更新しました。");
+      $(function(){
+      setTimeout(function(){
+        $("#emailUpdated").fadeOut(600);
+       },1900);
+     });
+     }else if(!result){
+      console.log('ajaxメールアドレスupdate失敗');
+      console.log(result);
+      $("#emailUpdated").fadeIn(700).text("メールアドレスを更新できませんでした。管理者までお問い合わせください。");
+      $(function(){
+      setTimeout(function(){
+        $("#emailUpdated").fadeOut(600);
+       },1900);
+     });
+     }else if(result==='error'){
+      console.log('ajaxメールアドレスDBアクセス失敗');
+      console.log(result);
+      $("#emailUpdated").fadeIn(700).text("メールアドレスを更新できませんでした。管理者までお問い合わせください。");
+      $(function(){
+      setTimeout(function(){
+        $("#emailUpdated").fadeOut(600);
+       },1900);
+     });
+     }
+    }).fail(function(XMLHttpRequest, textStatus, errorThrown){
+            alert(errorThrown);
+    });
+
+} // Email情報更新ここまで
+
+// パスワード更新ここから
+function update_pwd(){
+  console.log("ボタンが押されました！");
+  $("#pwdUpdated").fadeIn(700).text("メールアドレス更新 Placeholder 未実装部分");
+      $(function(){
+      setTimeout(function(){
+        $("#pwdUpdated").fadeOut(600);
+       },1900);
+     });
+}
+
+</script>
 
 <?php 
 // html header include
