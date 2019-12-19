@@ -51,8 +51,10 @@ $pdo=null;
 <div>
   <p><?=$r["name"] ?></p> <!-- 社名/屋号  -->
   <div> <!-- 基本情報前半 -->
-    <p>写真アップロードここ</p>
-    <button>写真アップロード</button>
+  <form id="my_form">
+    <input type="file" name="file_1">
+    <button type="button" onclick="file_upload()">写真/動画アップロード</button>
+</form>
   </div> <!-- 基本情報前半終わりここ -->
   
   <div> <!-- 基本情報後半 --> 
@@ -286,6 +288,35 @@ function update_pwd(){
        },1900);
      });
 }
+
+// 写真/動画アップロード
+function file_upload(){
+
+   // フォームデータを取得
+   let formdata = new FormData($('#my_form').get(0));
+   console.log(formdata);
+    
+  // Ajaxでhome/home_file_upload.phpでアップロード処理
+  function ajax_fileupload(){
+       return $.ajax({
+        type: 'post',
+        url: 'home/home_upload.php',
+        data:formdata,
+        cache:false,
+        contentType:false,
+        processData:false,
+        dataType:'html',
+       });
+    }
+    // returnでajaxの処理を返す 
+    ajax_fileupload().done(function(data,textStatus,jqXHR){
+       console.log(data);
+    }).fail(function(jqXHR, textStatus, errorThrown){
+       console.log("fail");
+    });
+
+
+} // 写真/動画アップロードここまで
 
 </script>
 
