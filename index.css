@@ -159,8 +159,8 @@ header {
 /* ボタン全体 */
 .flowbtn7{
   border-radius:50%;
-  /* position:relative;
-  display:inline-block; */
+  position:relative;
+  display:inline-block;
   width:50px;
   height:50px;
   font-size:30px;
