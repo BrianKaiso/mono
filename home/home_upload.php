@@ -4,6 +4,12 @@ session_start(); // session start
 
 include('../functions/functions.php'); // 関数をinclude
 
+if(!isset($_SESSION["chk_ssid"]) || $_SESSION["chk_ssid"] != session_id()){
+    //ログインしていない状態で訪れた場合、ログイン画面に遷移。メッセージを表示するためのフラグも持たせる
+    $_SESSION["checkout"]=true;
+    redirect("home_login.php"); 
+  }  
+
 // アップロードするファイル名が送信されたか＝選択されたかどうか判定。無ければfalseを返して終了
 $file_name = $_FILES["file_1"]["name"];
 

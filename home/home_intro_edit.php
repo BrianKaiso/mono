@@ -4,6 +4,12 @@ session_start(); // session start
 
 include('../functions/functions.php'); // 関数をinclude
 
+if(!isset($_SESSION["chk_ssid"]) || $_SESSION["chk_ssid"] != session_id()){
+    //ログインしていない状態で訪れた場合、ログイン画面に遷移。メッセージを表示するためのフラグも持たせる
+    $_SESSION["checkout"]=true;
+    redirect("home_login.php"); 
+  }  
+
 $fileroot = __DIR__."/intro/".$_SESSION["users_id"]; // 保存先のフォルダー
 
 // 保存先のフォルダーが存在するかどうか確認する
