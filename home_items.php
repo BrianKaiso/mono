@@ -5,6 +5,10 @@
    // functions include
    include(__DIR__.'/functions/functions.php'); 
 
+   // QRコード用ライブラリ
+   require_once(__DIR__ . 'qr/vendor/autoload.php');
+   use Endroid\QrCode\QrCode;
+
    if(!isset($_SESSION["chk_ssid"]) || $_SESSION["chk_ssid"] != session_id()){
      //ログインしていない状態で訪れた場合、ログイン画面に遷移。メッセージを表示するためのフラグも持たせる
      $_SESSION["checkout"]=true;
@@ -39,10 +43,16 @@
    $status = $stmt->execute(); // 成功ならtrue, 失敗ならfalse
 
    $view = '';
+   $url = 'http://localhost/index.php?p_code=';
    if($status==false) {
      sql_error($stmt); // include -> functions.php > function sql_error();
    }else{
      while($r2 = $stmt->fetch(PDO::FETCH_ASSOC)){  
+       $url.= $r2['p_code'];
+       $qrCode = new QrCode('$url');
+       header('Content-Type: '.$qrCode->getContentType());
+       echo $qrCode->writeString();
+       $url = 'http://localhost/index.php?p_code='; 
        $view .= "<div class=\"intro\"><div><img src='home/items/{$_SESSION["users_id"]}/{$r2['p_img']}' width='100' height='100' /></div><div><p>{$r2['p_name']}</p><p>{$r2{'p_spec'}}</p><p>{$r2['p_text']}</p></div><div><a href='home/home_items_delete.php?id={$r2['p_code']}'>削除</a></div></div>";
      }
     }
