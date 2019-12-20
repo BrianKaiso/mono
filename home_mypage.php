@@ -33,28 +33,53 @@
      $r = $stmt->fetch();
  }
 
+  // セラーの紹介画像がアップロード済の場合は、サムネイル表示する
+  $sql ="SELECT media FROM mst_creater WHERE c_code = '{$_SESSION["users_id"]}'";
+  $stmt = $pdo->prepare($sql);
+  $status = $stmt->execute(); // 成功ならtrue, 失敗ならfalse
+  
+  if($status==false) {
+    sql_error($stmt); // include -> functions.php > function sql_error();
+  }else{
+    $r2 = $stmt->fetch();
+    if(!empty($r2["media"])){
+     $thumnail=$r2["media"]; // セラーテーブルのmedia 空ではない=以前画像がアップロードされたので、サムネイルを表示するためのファイル名を生成
+    }
+}
+
 $pdo=null;
 // DB接続エンドHere
 
+// JSの処理で使用するのでセッションIDをJSの変数に渡しておく
+
 ?>
+<script>
+const mySession = <?=$_SESSION["users_id"]?>;
+console.log(mySession);
+</script>
 
 <main> <!-- マイページ コンテンツここから   -->
 <h1>マイページ</h1>
-<ul>
-<li><a href="/mono/home_mypage.php">マイページ</a></li>
-<li><a href="/mono/home/home_items.php">商品</a></li>
-<li><a href="/mono/home/home_news.php">ニュース</a></li>
-<li><a href="/mono/home/home_contents.php">コンテンツ</a></li>
-</ul>
+<?php
+// navigation include
+include(__DIR__.'/include/home/mypagenav.php');  
+?>
 
 <!-- マイページ基本情報表示と更新  -->
 <div>
   <p><?=$r["name"] ?></p> <!-- 社名/屋号  -->
   <div> <!-- 基本情報前半 -->
-  <form id="my_form">
-    <input type="file" name="file_1">
-    <button type="button" onclick="file_upload()">写真/動画アップロード</button>
-</form>
+  <?php 
+  // サムネイル写真があれば
+  if(!empty($thumnail)){
+   echo "<p><img id=\"thumnail\" src=\"/mono/home/upload/{$_SESSION["users_id"]}/{$thumnail}\" width=\"100\" height=\"100\" alt=\"販売者様サムネイル\" /></p>";
+  }
+   ?>
+   <form id="my_form">
+      <input type="file" name="file_1">
+      <button type="button" onclick="file_upload()">写真/動画アップロード</button>
+      <p id="my_form_ref"></p>
+     </form>
   </div> <!-- 基本情報前半終わりここ -->
   
   <div> <!-- 基本情報後半 --> 
@@ -294,7 +319,7 @@ function file_upload(){
 
    // フォームデータを取得
    let formdata = new FormData($('#my_form').get(0));
-   console.log(formdata);
+   //console.log(formdata);
     
   // Ajaxでhome/home_file_upload.phpでアップロード処理
   function ajax_fileupload(){
@@ -310,11 +335,34 @@ function file_upload(){
     }
     // returnでajaxの処理を返す 
     ajax_fileupload().done(function(data,textStatus,jqXHR){
+       console.log("値が帰ってきたよ！");
        console.log(data);
-    }).fail(function(jqXHR, textStatus, errorThrown){
+    
+        if(data==='false'){
+            $("#my_form_ref").text("アップロードに失敗しました。");
+        }else{
+            $("#my_form_ref").text("アップロードが完了しました！");
+           // サムネイルを書き換える
+           if(document.getElementById("thumnail") != null){
+           document.getElementById("thumnail").src = `/mono/home/upload/${mySession}/${data}`;
+           }else{
+            // 初期状態でサムネイル画像が登録されていない場合、imgタグを作ってあげる必要がある
+            // form #my_formの前に作るよ
+            document.getElementById("my_form").insertAdjacentHTML("beforebegin", "<p><img id='thumnail' src='' width='100' height='100' alt='販売者様サムネイル' /></p>"); 
+            document.getElementById("thumnail").src = `/mono/home/upload/${mySession}/${data}`;
+           }           
+        }
+     }).fail(function(jqXHR, textStatus, errorThrown){
        console.log("fail");
     });
 
+    //    if(data){
+    //       $("#my_form_ref").text("アップロードが完了しました！");
+    //       // サムネイルを書き換える
+    //       document.getElementById("thumnail").src = `/mono/home/upload/${mySession}/${data}`;
+    //  }else{
+    //     $("#my_form_ref").text("アップロードに失敗しました。");
+    //    }
 
 } // 写真/動画アップロードここまで
 
