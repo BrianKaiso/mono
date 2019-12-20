@@ -1,4 +1,8 @@
 <?php
+// session start
+session_start();
+
+include(__DIR__.'/functions/functions.php');
 // index.phpから送られてきたID
 $id = $_GET["p_code"];
 
@@ -14,7 +18,7 @@ $status = $stmt->execute(); // 成功ならtrue, 失敗ならfalse
 if($status==false) {
     sql_error($stmt); // include -> functions.php > function sql_error();
   }else{
-     $r = $stmt->fetchAll();
+     $r = $stmt->fetch();
    }
 
    $pdo=null;

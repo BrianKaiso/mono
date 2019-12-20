@@ -33,7 +33,7 @@ if(password_verify($lpw, $val["lpw"])){
      $_SESSION["users_id"] = $val['users_id'];
    
         if($_SESSION["checkout"]){
-        redirect("index.php"); 
+        redirect("user.php"); 
       }
     }else{
       //Login失敗時(Logout経由)
