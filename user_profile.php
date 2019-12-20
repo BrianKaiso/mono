@@ -7,12 +7,10 @@ include(__DIR__.'/functions/functions.php');
 // index.phpから送られてきたID
 $id = $_GET["p_code"];
 
-echo $id;
 
 
 // DB接続
 $pdo = db_conn();
-
 $sql = "SELECT * FROM mst_content WHERE p_code='{$id}'";
 
 //２．$sqlをprepareに渡してステートメントに入れる
