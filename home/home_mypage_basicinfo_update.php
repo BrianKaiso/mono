@@ -3,6 +3,12 @@ session_start(); // session start
 
 header("Content-Type: application/json; charset=UTF-8"); //ヘッダー情報の明記。必須。
 
+if(!isset($_SESSION["chk_ssid"]) || $_SESSION["chk_ssid"] != session_id()){
+    //ログインしていない状態で訪れた場合、ログイン画面に遷移。メッセージを表示するためのフラグも持たせる
+    $_SESSION["checkout"]=true;
+    redirect("home_login.php"); 
+  }  
+
 // functions include
 // include(__DIR__.'/functions/functions.php');
 include('../functions/functions.php');
