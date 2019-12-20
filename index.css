@@ -1,0 +1,212 @@
+#top_img{
+  width:100%;
+  max-width: 100%;
+  height: auto;
+}
+
+header {
+  position: fixed; /* ヘッダーを固定する */
+  top: 0; /* 上部から配置の基準位置を決める */
+  left: 0; /* 左から配置の基準位置を決める */
+  width: 100%; /* ヘッダーの横幅を指定する */
+  height: 50px; /* ヘッダーの高さを指定する */
+  padding: 10px; /* ヘッダー内側の余白を指定する(上下左右) */
+  background-color: #31a9ee; /* ヘッダーの背景色を指定する */
+  color: #000000; /* ヘッダーのフォントの色を指定する */
+  z-index: 2;
+  }
+
+.new_box{
+ display: inline-block;
+ position: relative;
+ width: 250px;
+ height: 250px;
+ border: 1px solid darkgray;
+}
+
+.new{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.title{
+  text-align: center;
+}
+
+/*登録用ボタン*/
+.btn-flat-border {
+  display: inline-block;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  color: #67c5ff;
+  border: solid 2px #67c5ff;
+  border-radius: 3px;
+  transition: .4s;
+}
+
+.btn-flat-border:hover {
+  background: #67c5ff;
+  color: white;
+}
+
+.globalMenu {
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  background: #fff;
+  color: #000;
+  text-align: center;
+  transform: translateY(-100%);
+  transition: all 0.6s;
+  width: 100%;
+}
+
+.globalMenu ul {
+  background: #ccc;
+  margin: 0 auto;
+  padding: 0;
+  width: 100%;
+}
+
+.globalMenu ul li {
+  font-size: 1.1em;
+  list-style-type: none;
+  padding: 0;
+  width: 100%;
+  border-bottom: 1px dotted #333;
+}
+
+/* 最下層ライン消去 */
+.globalMenu ul li:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.globalMenu ul li a {
+  display: block;
+  color: #000;
+  padding: 1em 0;
+}
+
+/* 上からスライド */
+.globalMenu.active {
+  transform: translateY(0%);
+}
+
+/* 3本線 */
+.navToggle {
+  display: block;
+  position: fixed;
+  right: 13px;
+  top: 12px;
+  width: 42px;
+  height: 51px;
+  cursor: pointer;
+  z-index: 3;
+  background: #666;
+  text-align: center;
+}
+
+.navToggle span {
+  display: block;
+  position: absolute;
+  width: 30px;
+  border-bottom: solid 3px #eee;
+  -webkit-transition: 0.35s ease-in-out;
+  -moz-transition: 0.35s ease-in-out;
+  transition: 0.35s ease-in-out;
+  left: 6px;
+}
+
+.navToggle span:nth-child(1) {
+  top: 9px;
+}
+.navToggle span:nth-child(2) {
+  top: 18px;
+}
+.navToggle span:nth-child(3) {
+  top: 27px;
+}
+.navToggle span:nth-child(4) {
+  border: none;
+  color: #eee;
+  font-size: 9px;
+  font-weight: bold;
+  top: 34px;
+}
+
+/* X作成 */
+.navToggle.active span:nth-child(1) {
+  top: 18px;
+  left: 6px;
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+.navToggle.active span:nth-child(2),
+.navToggle.active span:nth-child(3) {
+  top: 18px;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+
+/*SNSボタン*/
+/* ボタン全体 */
+.flowbtn7{
+  border-radius:50%;
+  /* position:relative;
+  display:inline-block; */
+  width:50px;
+  height:50px;
+  font-size:30px;
+  color:#fff!important;
+  text-decoration:none;
+  transition:.5s;			
+  }
+  /* アイコンをど真ん中に*/
+  .flowbtn7 i{
+  position:absolute;
+  top:50%;
+  left:50%;
+  -ms-transform:translate(-50%,-50%);
+  -webkit-transform:translate(-50%,-50%);
+  transform:translate(-50%,-50%);
+  }
+  /* ulタグの内側余白を０にする */
+  ul.snsbtniti{
+  padding:0!important;
+  }
+  /* ボタン全体の位置 */
+  .snsbtniti{
+  display:flex;
+  flex-flow:row wrap;
+  justify-content:space-around;
+  }
+  /* ボタン同士の余白 */
+  .snsbtniti li{
+  flex:0 0 33%;
+  text-align:center !important;
+  }
+  /* ボタンにマウスを乗せた時 */
+  .flowbtn7:hover{
+  -webkit-transform:translateY(-5px);
+  -ms-transform:translateY(-5px);
+  transform:translateY(-5px);
+  }
+  /* Twitter */
+  .fl_tw7{
+  background:linear-gradient(135deg, #13f1fc 0%,#0470dc 100%);
+  }
+/* LINE */
+.fl_li7{
+  background: linear-gradient(135deg, #3a9278 0%,#00c300 100%);
+  }
+  /* Facebook */
+.fl_fb7{
+  background: linear-gradient(135deg, #6699ff 0%,#3b5998 100%);
+  }

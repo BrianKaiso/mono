@@ -23,7 +23,6 @@ foreach ($stmt as $r) {
   // データベースのフィールド名で出力。
   // echo $row['p_name'];みたいな感じで書いたらHTML内に持ってこれるで。
   }
-
 ?>
 
 <!DOCTYPE html>
@@ -34,7 +33,7 @@ foreach ($stmt as $r) {
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="jquery-2.1.3.min.js"></script>
     <link rel="stylesheet" href="reset.css" />
-    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="user.css" />
     <link rel="stylesheet" href="video.css" />
     <title>サービス名</title>
 </head>
