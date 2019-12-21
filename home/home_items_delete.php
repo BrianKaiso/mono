@@ -10,9 +10,14 @@ if(!isset($_SESSION["chk_ssid"]) || $_SESSION["chk_ssid"] != session_id()){
     redirect("home_login.php"); 
   }  
 
+// お客様固有のアップロード先フォルダー
+$fileroot = __DIR__."/items/".$_SESSION["users_id"]; 
+
 // 消去リンクで送られてきたid番号を取得し、無害化する
 $id=$_GET["id"];
 $id=hCheck($id);
+$img=$_GET["img"];
+$img=hCheck($img);
 
 //$_SESSION["users_id"];
 
@@ -35,6 +40,8 @@ if($status==false) {
   redirect("../home_items.php");
   exit;
 }else{
+  // データーベースからの削除に成功したので、当該セラーのintroフォルダーの該当写真を消去する
+  unlink("$fileroot/$img");
   $error[]="一件削除しました！";
   $_SESSION["intro_edit_check"]=$error;
   redirect("../home_items.php");

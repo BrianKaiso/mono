@@ -43,7 +43,7 @@
      sql_error($stmt); // include -> functions.php > function sql_error();
    }else{
     while($r2 = $stmt->fetch(PDO::FETCH_ASSOC)){  
-      $view .= "<div class=\"intro\"><div><img src='home/intro/{$_SESSION["users_id"]}/{$r2['media']}' width='100' height='100' /></div><div><p>{$r2['title']}</p><p>{$r2{'text'}}</p></div><div><a href='home/home_intro_delete.php?id={$r2['id']}'>削除</a></div></div>";
+      $view .= "<div class=\"intro\"><div><img src='home/intro/{$_SESSION["users_id"]}/{$r2['media']}' width='100' height='100' /></div><div><p>{$r2['title']}</p><p>{$r2{'text'}}</p></div><div><a href='home/home_intro_delete.php?id={$r2['id']}&media={$r2['media']}'>削除</a></div></div>";
     }  
  }
 

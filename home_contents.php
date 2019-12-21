@@ -34,7 +34,9 @@
  }
 
    // コンテンツ一覧表示
-   $sql ="SELECT * FROM mst_content WHERE c_code = '{$_SESSION["users_id"]}'";
+  // $sql ="SELECT * FROM mst_content WHERE c_code = '{$_SESSION["users_id"]}'";
+   $sql ="SELECT * FROM mst_content JOIN mst_product ON mst_content.p_code = mst_product.p_code WHERE mst_content.c_code = '{$_SESSION["users_id"]}'";
+
    $stmt = $pdo->prepare($sql);
    $status = $stmt->execute(); // 成功ならtrue, 失敗ならfalse
 
@@ -43,7 +45,7 @@
      sql_error($stmt); // include -> functions.php > function sql_error();
    }else{
      while($r2 = $stmt->fetch(PDO::FETCH_ASSOC)){  
-       $view .= "<div class=\"intro\"><div><img src='home/contents/{$_SESSION["users_id"]}/{$r2['c_file']}' width='100' height='100' /></div><div><p>{$r2['title']}</p><p>{$r2{'comment'}}</p></div><div><a href='home/home_contents_delete.php?id={$r2['id']}'>削除</a></div></div>";
+       $view .= "<div class=\"intro\"><div><span>投稿日時:&nbsp;</span>{$r2['time_stamp']}<br /><span>表示先商品:&nbsp;</span>{$r2['p_name']}<br /><img src='home/contents/{$_SESSION["users_id"]}/{$r2['c_file']}' width='100' height='100' /></div><div><p>{$r2['title']}</p><p>{$r2{'comment'}}</p></div><div><a href='home/home_contents_delete.php?id={$r2['id']}&file={$r2['c_file']}'>削除</a></div></div>";
      }
     }
 
@@ -57,7 +59,7 @@
      $stmt = $pdo->prepare($sql);
      $status = $stmt->execute(); // 成功ならtrue, 失敗ならfalse
   
-     $view2 = '<select name="products_code" size="5"><option value="">商品を選択</option>';
+     $view2 = '<select name="products_code" size="5">';
      if($status==false) {
        sql_error($stmt); // include -> functions.php > function sql_error();
      }else{
@@ -106,7 +108,7 @@ include(__DIR__.'/include/home/mypagenav.php');
       <dt>タイトル<dt>
       <dd><input type="text" id="title" name="title" size="80" maxLength="30" placeholder="タイトル(30文字以内)" /><dd>
       <dt>本文</dt>
-      <dd><textarea type="textarea" id="spec" name="spec" rows="5" cols="100" placeholder="表示した写真や動画についての説明" /></textarea></dd>
+      <dd><textarea type="textarea" id="comment" name="comment" rows="5" cols="100" placeholder="表示した写真や動画についての説明" /></textarea></dd>
       <dt>メディア<dt>
       <dd><input type="file" name="upfile"></dd>
     </dl>
