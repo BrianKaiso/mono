@@ -22,10 +22,8 @@ $status = $stmt->execute();
 foreach ($stmt as $r) {
   // データベースのフィールド名で出力。
   // echo $row['p_name'];みたいな感じで書いたらHTML内に持ってこれるで。
-<<<<<<< Updated upstream
+
   }
-=======
-}
 
 // 各コンテンツのデータ抜き取り 始まり
 $sql = "SELECT * FROM mst_content WHERE p_code='{$id}'";
@@ -51,7 +49,6 @@ $view .= "<h2>{$r["comment"]}</h2>";
 $view .= "<p>{$r["c_date"]}</p>";
 $view .= "</div>"; // 終了タグ
 // exit;
->>>>>>> Stashed changes
 ?>
 
 <!DOCTYPE html>
