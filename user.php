@@ -22,7 +22,36 @@ $status = $stmt->execute();
 foreach ($stmt as $r) {
   // データベースのフィールド名で出力。
   // echo $row['p_name'];みたいな感じで書いたらHTML内に持ってこれるで。
+<<<<<<< Updated upstream
   }
+=======
+}
+
+// 各コンテンツのデータ抜き取り 始まり
+$sql = "SELECT * FROM mst_content WHERE p_code='{$id}'";
+
+//２．$sqlをprepareに渡してステートメントに入れる
+$stmt = $pdo->prepare($sql);
+$status = $stmt->execute(); // 成功ならtrue, 失敗ならfalse
+
+if($status==false) {
+    sql_error($stmt); // include -> functions.php > function sql_error();
+  }else{
+    $r = $stmt->fetch();
+    // var_dump($r);
+}
+
+$pdo=null;
+// DB接続エンドHere
+
+$view ="<div class=\"contentBox1\">";
+// $view .="<img src=\"img/{$r["c_file"]}\" />";
+$view .= "</div><div class=\"contentBox2\"><h1>{$r["c_title"]}</h1>";
+$view .= "<h2>{$r["comment"]}</h2>";
+$view .= "<p>{$r["c_date"]}</p>";
+$view .= "</div>"; // 終了タグ
+// exit;
+>>>>>>> Stashed changes
 ?>
 
 <!DOCTYPE html>
@@ -91,13 +120,13 @@ foreach ($stmt as $r) {
 </video>
 
 <div class="link1">
-<ul>
-  <li>製品名</li>
-  <li><a href="nice.php">いいね！</a></li>
+<ul class=seihin>
+  <li class=midashi1>製品名</li>
+  <li class=iine><a href="nice.php">いいね！</a></li>
 </ul>
-<ul>
-  <li>生産者名</li>
-  <li><a href="follow.php">商品をフォロー</a></li>
+<ul class=seisan>
+  <li class=midashi2>生産者名</li>
+  <li class=follow><a href="follow.php">商品をフォロー</a></li>
 </ul>
 </div>
 
@@ -105,7 +134,7 @@ foreach ($stmt as $r) {
   <li><a href="user_story.php?shop=aaa">こだわり</a></li> <!-- ストーリーにあたる  -->
   <li><a href="user_contents.php?shop=aaa&items=xxx">使い方</a></li> <!--  (3) How toコンテンツページ URLは生産者名、商品ID、コンテンツID  -->
   <li><a href="user_news.php?shop=aaa&items=xxx">お知らせ</a></li> <!-- (4) ニュース URLは生産者生と商品ID   -->
-  <li><a href="user_msg.php?shop=aaa&items=xxx">他の製品</a></li> <!-- list.php   -->
+  <li><a href="user_list.php?shop=aaa&items=xxx">他の製品</a></li> <!-- list.php   -->
   <li><a href="user_profile.php?shop=aaaa">生産者紹介</a></li> <!-- (2) 生産者紹介・こだわり URLは生産者名   --> 
 </ul>
 

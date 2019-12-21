@@ -1,4 +1,4 @@
-
+/* ハンバーガーメニュー */
 .globalMenu {
   position: fixed;
   z-index: 2;
@@ -101,4 +101,34 @@
   -webkit-transform: rotate(45deg);
   -moz-transform: rotate(45deg);
   transform: rotate(45deg);
+}
+
+/* 見出し部分_製品名と生産者名 */
+
+.link1 {
+  font-size: 2rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.midashi1 {
+  display: flex;
+  justify-content: space-between;
+}
+
+.seihin {
+}
+
+.iine {
+}
+
+.midashi2 {
+  display: flex;
+  justify-content: space-between;
+}
+
+.seisan {
+}
+
+.follow {
 }
