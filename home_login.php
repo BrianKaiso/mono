@@ -13,12 +13,10 @@
     }
 
 ?>
-<h1>販売者様ログイン</h1>
-
+<h1>出品者ログイン</h1>
 <!-- セラーログインページ    -->
 <div>
-<p id="tpmsg" class="logad">こちらからアカウントにログインしてください。</p>
-
+<p id="tpmsg" class="space">こちらからアカウントにログインしてください。</p>
 <?php
 // 新規登録が成功した場合、home_newacc.phpからここに飛ぶ
 if(isset($_SESSION["newacc"])){
@@ -41,7 +39,7 @@ if(isset($_SESSION["false"])){
   $("#tpmsg").remove(); // ログインに失敗した場合、エラーメッセージを表示したいので、デフォルトのメッセージを非表示にする
   </script>
   <?php
-   echo "<p id=\"tpmsg\" class=\"logad\">ログインに失敗しました。入力したメールアドレスとパスワードが正しいかどうか確認してください。</p>";
+   echo "<p id=\"tpmsg\" class=\"space red\">ログインに失敗しました。入力したメールアドレスとパスワードが正しいかどうか確認してください。</p>";
     $_SESSION["false"]=false;
   }
 }
@@ -82,7 +80,9 @@ if(isset($errMsg)){
 </ul>
 </form>
 
-<p>新規登録は<a href="home_newacc.php">こちら</a></p>
+<br />
+<p>アカウントをまだお持ちではないですか？新規登録は<a href="home_newacc.php" class="underline">こちら</a></p>
+<br />
 </div>
 <!-- セラーログイン ここまで --> 
 

@@ -3,7 +3,7 @@
 session_start();
 
 // functions include
-include(__DIR__.'/functions/home/functions.php');
+include(__DIR__.'/functions/functions.php');
 
 //POST値
 $users_email = $_POST["c_id"];

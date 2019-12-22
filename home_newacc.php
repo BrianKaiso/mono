@@ -14,7 +14,7 @@
 
 ?>
 
-<h1>販売者様(セラー)新規登録</h1>
+<h1>出品者新規登録</h1><br />
 
 <!-- セラー新規登録ページ    -->
 <div>
@@ -32,9 +32,9 @@ if(isset($errMsg)){
 <div id="loginBox3">
 <!-- newacc_act.php はアカウント新規作成用のPHPです。 -->
 <form id="newaccForm" action="#">
-<p class="myright"><span>*は必須項目です。</span></p>
+<p class="myright"><span>*は必須項目です。</span></p><br />
+<h2>ユーザー情報</h2>
 <fieldset class="first">
-    <legend>ユーザー情報</legend>
         <dl><dt>社名/商号<span>*</span></dt><dd><input id="users_name" type="text" name="users_name" size="25" maxLength="25" oninput="isInCk(this)" /><span></span></dd></dl>
         <dl><dt>担当者氏名<span>*</span></dt><dd><input id="users_name_in_charge" type="text" name="users_name_in_charge" size="25" maxLength="25" oninput="isInCk(this)" /><span></span></dd></dl>
         <dl><dt>郵便番号<span>*</span></dt><dd><input id="users_post1" type="text" name="users_post1" size="4" maxLength="3" oninput="isRegNumP1(this)" />&nbsp;-&nbsp;<input id="users_post2" type="text" name="users_post2" size="8" maxLength="4" oninput="isRegNumP2(this)"  />
@@ -94,8 +94,8 @@ if(isset($errMsg)){
            <dl><dt>住所<span>*</span></dt><dd><input id="add" type="text" name="users_address" size="25" maxLength="50" oninput="isInCk(this)" /></dd></dl>
            <dl><dt>電話番号<span>*</span></dt><dd><input id="phone" type="text" name="users_phone" size="25" maxLength="16" onBlur="isRegPh(this)" /><br /><span id="phcheck"></span></dd></dl>
 </fieldset>
+<h2>ログイン情報</h2>
 <fieldset class="second">
-        <legend>ログイン情報</legend>
         <dl><dt>メール<span>*</span></dt><dd><input id="myemail" type="text" name="users_email" size="25" maxLength="50" placeholder="メール" onBlur="isRegEmail(this)"/><br /><span id="emailcheck"></span></dd></dl>
         <dl><dt>パスワード<span>*</span></dt><dd><input type="password" id="pwd" name="lpw" size="25" maxLength="25" placeholder="パスワード"/><br /><span id="pwdcheck1"></span></dd></dl>
        <dl><dt>パスワード<span>*</span><br /><span class="small">&nbsp;&nbsp;&nbsp;&nbsp;(再入力)</span></dt>
@@ -107,7 +107,7 @@ if(isset($errMsg)){
         
         <p class="exp">パスワードに使える文字: 5～16文字以内で半角のアルファベット小文字、大文字、数字を1種類以上含めてください。</p>
 </fieldset>
-<div id="caub4" class="mycenter">
+<div id="caub4">
 <a id="accBtn" onclick="newAccAct()">アカウントを作成する</a>
 </div>
 </form>
@@ -478,9 +478,8 @@ function newAccAct(){
  </script>
 
 
-
-
-<p>すでにアカウントをお持ちですか？ログインは<a href="home_login.php">こちら</a></p>
+<p>すでにアカウントをお持ちですか？ログインは<a href="home_login.php" class="underline">こちら</a></p>
+<br />
 </div>
 <!-- セラー新規登録 ここまで --> 
 

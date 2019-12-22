@@ -43,14 +43,21 @@
    $status = $stmt->execute(); // 成功ならtrue, 失敗ならfalse
 
    $view = '';
+   $odd = 0;
    if($status==false) {
      sql_error($stmt); // include -> functions.php > function sql_error();
    }else{
      while($r2 = $stmt->fetch(PDO::FETCH_ASSOC)){  
+      $odd++;
+      if($odd%2 === 0){
+        $view .= "<div class=\"intro bgodd\">";
+      }else{
+        $view .= "<div class=\"intro\">";
+      }
        if($r2['all_flag']==='1'){
-        $view .= "<div class=\"intro\"><div><span>投稿日時:&nbsp;</span>{$r2['n_date']}<br /><span>表示先商品:&nbsp;</span>全商品<br /><img src='home/news/{$_SESSION["users_id"]}/{$r2['n_img']}' width='100' height='100' /></div><div><p>{$r2['title']}</p><p>{$r2{'article'}}</p></div><div><a href='home/home_news_delete.php?id={$r2['n_code']}&file={$r2['n_img']}'>削除</a></div></div>";
-       }else{
-        $view .= "<div class=\"intro\"><div><span>投稿日時:&nbsp;</span>{$r2['n_date']}<br /><span>表示先商品:&nbsp;</span>{$r2['p_name']}<br /><img src='home/news/{$_SESSION["users_id"]}/{$r2['n_img']}' width='100' height='100' /></div><div><p>{$r2['title']}</p><p>{$r2{'article'}}</p></div><div><a href='home/home_news_delete.php?id={$r2['n_code']}&file={$r2['n_img']}'>削除</a></div></div>";
+        $view .= "<div class=\"sm\"><p class=\"small001\"><span>投稿日時:&nbsp;</span>{$r2['n_date']}<br /><span>表示先商品:&nbsp;</span>全商品</p><img src='home/news/{$_SESSION["users_id"]}/{$r2['n_img']}' /></div><div class=\"lg\"><p>{$r2['title']}</p><p>{$r2{'article'}}</p></div><div class=\"sm\"><a class=\"accBtn2\" href='home/home_news_delete.php?id={$r2['n_code']}&file={$r2['n_img']}'>削除</a></div></div>"; 
+      }else{
+        $view .= "<div class=\"sm\"><p class=\"small001\"><span>投稿日時:&nbsp;</span>{$r2['n_date']}<br /><span>表示先商品:&nbsp;</span>{$r2['p_name']}</p><img src='home/news/{$_SESSION["users_id"]}/{$r2['n_img']}' /></div><div class=\"lg\"><p>{$r2['title']}</p><p>{$r2{'article'}}</p></div><div class=\"sm\"><a class=\"accBtn2\" href='home/home_news_delete.php?id={$r2['n_code']}&file={$r2['n_img']}'>削除</a></div></div>";
       }
      }
     }
@@ -91,12 +98,13 @@ include(__DIR__.'/include/home/mypagenav.php');
 ?>
 
 <!-- マイページ基本情報表示と更新  -->
-  <p><?=$r["name"] ?>さんの商品の最新ニュースを届けよう！登録一覧から”全商品ページに表示”を選択すると、すべての商品ページで表示されるニュースを登録することもできます。</p> <!-- 社名/屋号  -->
+  <p><strong><?=$r["name"] ?></strong>さんの商品の最新ニュースを届けよう！</p>
+  <p>登録一覧から”全商品ページに表示”を選択すると、すべての商品ページで表示されるニュースを登録することもできます。</p> <!-- 社名/屋号  -->
   <?php
     if(isset($_SESSION["intro_edit_check"])){
       $error="";
       foreach( $_SESSION["intro_edit_check"] as $val ) {
-        $error .= "<p>";
+        $error .= "<p class=\"red\">";
         $error .= "$val";
         $error .= "</p>";
     }
@@ -112,9 +120,9 @@ include(__DIR__.'/include/home/mypagenav.php');
     <dl>
       <dt>表示先商品</dt><dd><?=$view2?></dd>
       <dt>タイトル<dt>
-      <dd><input type="text" id="title" name="title" size="80" maxLength="30" placeholder="タイトル(30文字以内)" /><dd>
+      <dd><input type="text" id="title" name="title" size="35" maxLength="30" placeholder="タイトル(30文字以内)" /><dd>
       <dt>本文</dt>
-      <dd><textarea type="textarea" id="article" name="article" rows="5" cols="100" placeholder="ニュースの本文部分"></textarea></dd>
+      <dd><textarea type="textarea" id="article" name="article" rows="5" placeholder="ニュースの本文部分"></textarea></dd>
       <dt>メディア<dt>
       <dd><input type="file" name="upfile"></dd>
     </dl>

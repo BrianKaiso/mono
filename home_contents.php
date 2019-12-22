@@ -41,11 +41,17 @@
    $status = $stmt->execute(); // 成功ならtrue, 失敗ならfalse
 
    $view = '';
+   $odd = 0;
    if($status==false) {
      sql_error($stmt); // include -> functions.php > function sql_error();
    }else{
-     while($r2 = $stmt->fetch(PDO::FETCH_ASSOC)){  
-       $view .= "<div class=\"intro\"><div><span>投稿日時:&nbsp;</span>{$r2['time_stamp']}<br /><span>表示先商品:&nbsp;</span>{$r2['p_name']}<br /><img src='home/contents/{$_SESSION["users_id"]}/{$r2['c_file']}' width='100' height='100' /></div><div><p>{$r2['title']}</p><p>{$r2{'comment'}}</p></div><div><a href='home/home_contents_delete.php?id={$r2['id']}&file={$r2['c_file']}'>削除</a></div></div>";
+     while($r2 = $stmt->fetch(PDO::FETCH_ASSOC)){ 
+      $odd++;
+      if($odd%2 === 0){
+        $view .= "<div class=\"intro bgodd\"><div class=\"sm\"><p class=\"small001\"><span>投稿日時:&nbsp;</span>{$r2['time_stamp']}<br /><span>表示先商品:&nbsp;</span>{$r2['p_name']}</p><img src='home/contents/{$_SESSION["users_id"]}/{$r2['c_file']}' /></div><div class=\"lg\"><p>{$r2['title']}</p><p>{$r2{'comment'}}</p></div><div class=\"sm\"><a class=\"accBtn2\" href='home/home_contents_delete.php?id={$r2['id']}&file={$r2['c_file']}'>削除</a></div></div>";
+      }else{
+        $view .= "<div class=\"intro\"><div class=\"sm\"><p class=\"small001\"><span>投稿日時:&nbsp;</span>{$r2['time_stamp']}<br /><span>表示先商品:&nbsp;</span>{$r2['p_name']}</p><img src='home/contents/{$_SESSION["users_id"]}/{$r2['c_file']}' /></div><div class=\"lg\"><p>{$r2['title']}</p><p>{$r2{'comment'}}</p></div><div class=\"sm\"><a class=\"accBtn2\" href='home/home_contents_delete.php?id={$r2['id']}&file={$r2['c_file']}'>削除</a></div></div>";
+      }
      }
     }
 
@@ -84,7 +90,7 @@ include(__DIR__.'/include/home/mypagenav.php');
 ?>
 
 <!-- マイページ基本情報表示と更新  -->
-  <p><?=$r["name"] ?>さんの商品の魅力を紹介するコンテンツ（使い方、How toなど）をこちらで登録・編集することができます。</p> <!-- 社名/屋号  -->
+  <p><strong><?=$r["name"] ?></strong>さんの商品の魅力を紹介するコンテンツ（使い方、How toなど）をこちらで登録・編集することができます。</p> <!-- 社名/屋号  -->
   <?php
     if(isset($_SESSION["intro_edit_check"])){
       $error="";
@@ -104,9 +110,9 @@ include(__DIR__.'/include/home/mypagenav.php');
     <form method="post" action="home/home_contents_edit.php" enctype="multipart/form-data">
     <dl>
       <dt>表示先商品</dt><dd><?=$view2?></dd>
-      <dt>タイトル</dt><dd><input type="text" id="title" name="title" size="80" maxLength="30" placeholder="タイトル(30文字以内)" /></dd>
+      <dt>タイトル</dt><dd><input type="text" id="title" name="title" size="30" maxLength="30" placeholder="タイトル(30文字以内)" /></dd>
       <dt>本文</dt>
-      <dd><textarea type="textarea" id="comment" name="comment" rows="5" cols="100" placeholder="表示した写真や動画についての説明" ></textarea></dd>
+      <dd><textarea type="textarea" id="comment" name="comment" rows="5" placeholder="表示した写真や動画についての説明" ></textarea></dd>
       <dt>メディア</dt><dd><input type="file" name="upfile"></dd>
     </dl>
     <input type="submit" value="登録する">
