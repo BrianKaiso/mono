@@ -4,22 +4,30 @@
  <!-- footerここから -->
 <footer>
 
-<div> <!-- footerナビ2段組み   -->
 <!-- 手のひらストーリ運営会社紹介 -->
+<div>
  <ul>
-    <li><span>ご案内</span></li>
-    <li><a href="index.php">サービスホーム</a></li>
+    <li><h3>ご案内</h3></li>
+    <li><a href="#">初めての方へ</a></li>
+    <li><a href="#">ご利用ガイド</a></li>
+    <li><a href="#">FAQ</a></li>
+    <li><a href="#">出品したい</a></li>
+    <li><a href="#">購入したい</a></li>
+    <li><a href="#">店舗運営の方へ</a></li>
+ </ul>
+
+ <ul>
+    <li><h3>手のひらストーリ</h3></li>
     <li><a href="#">ミッション</a></li>
-    <li><a href="#">サービス</a></li>
-    <li><a href="#">利用者紹介</a></li>
+    <li><a href="#">提供サービス</a></li>
+    <li><a href="#">利用者の声</a></li>
     <li><a href="#">メディア</a></li>
-    <li><a href="#">メンバー</a></li>
     <li><a href="#">運営会社案内</a></li>
     <li><a href="#">お問い合わせ</a></li>
  </ul>
 
  <ul> <!-- 生産者向けサービスナビゲーション -->
-   <li><span>会員メニュー</span></li>
+   <li><h3>会員メニュー</h3></li>
    <li><a href="home.php">会員ホーム</a></li>
   <?php 
     if(!isset($_SESSION["chk_ssid"])){
@@ -40,10 +48,11 @@
   }
   ?>
   </ul> 
-</div> <!-- footerナビ2段組み終わり   -->
+</div>
 
 <!-- SNSアイコン placeholder  -->
-<p>SNSイメージここ</p>
+<p class="center sns"><a href="#"><img src="/mono/img/sns/fb.png" width="35" height="35"/></a><a href="#"><img src="/mono/img/sns/in.png" width="35" height="35"/></a><a href="#"><img src="/mono/img/sns/li.png" width="35" height="35"/></a><a href="#"><img src="/mono/img/sns/tw.png" width="35" height="35"/></a></p>
+<p class="center small001">&copy;2019&nbsp; 手のひらストーリ Ltd. all rights reserved</p>
 
 </footer> 
 <!-- footerここまで -->

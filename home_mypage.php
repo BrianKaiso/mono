@@ -59,7 +59,7 @@ $pdo=null;
 let mySession = <?=$_SESSION["users_id"]?> ;
 </script>
 
-<h1>マイページ</h1>
+<h1>マイページ - トップ</h1>
 <?php
 // navigation include
 include(__DIR__.'/include/home/mypagenav.php');  
@@ -67,30 +67,37 @@ include(__DIR__.'/include/home/mypagenav.php');
 
 <!-- マイページ基本情報表示と更新  -->
 <div>
-  <p><?=$r["name"] ?></p> <!-- 社名/屋号  -->
-  <div> <!-- 基本情報前半 -->
+<p><strong><?=$r["name"] ?></strong>さんのマイページです。こちらの画面では『プロフィール写真』、『基本情報』、『ログイン情報』の編集をすることができます。</p> <!-- 社名/屋号  -->
+<p>自己紹介、商品登録、ニュース、コンテンツの登録・編集・削除を行いたい場合は、上記のメニューよりお選びください。</p>  
+<br />
+ <div> <!-- 基本情報前半 -->
+ <h2>プロフィール写真</h2>
+ <br />
+ <form id="my_form">
+      <input type="file" name="file_1">
+      <button type="button" onclick="file_upload()">写真/動画アップロード</button>
+      <p id="my_form_ref" class="red"></p>
+     </form>
+  <br />
   <?php 
   // サムネイル写真があれば
   if(!empty($thumnail)){
-   echo "<p><img id=\"thumnail\" src=\"/mono/home/upload/{$_SESSION["users_id"]}/{$thumnail}\" width=\"100\" height=\"100\" alt=\"販売者様サムネイル\" /></p>";
+   // echo "<p><img id=\"thumnail\" src=\"/mono/home/upload/{$_SESSION["users_id"]}/{$thumnail}\" width=\"100\" height=\"100\" alt=\"販売者様サムネイル\" /></p>";
+   echo "<p><img id=\"thumnail\" src=\"/mono/home/upload/{$_SESSION["users_id"]}/{$thumnail}\" alt=\"販売者様サムネイル\" /></p>";
+
   }
    ?>
-   <form id="my_form">
-      <input type="file" name="file_1">
-      <button type="button" onclick="file_upload()">写真/動画アップロード</button>
-      <p id="my_form_ref"></p>
-     </form>
   </div> <!-- 基本情報前半終わりここ -->
   
   <div> <!-- 基本情報後半 --> 
+  <h2>基本情報</h2>
   <fieldset>
-    <legend>基本情報</legend>
     <dl>
-      <dt>担当者<dt>
-      <dd><input type="text" id="name_in_charge" name="name_in_charge" size="25" maxLength="25" value="<?=$r["name_in_charge"]?>" /><dd>
-      <dt>郵便番号<dt>
-      <dd><input type="text" id="postal1" name="postal1" size="4" maxLength="3" value="<?=$r["postal1"]?>" />&nbsp;-&nbsp;<input type="text" id="postal2" name="postal2" size="6" maxLength="4" value="<?=$r["postal2"]?>" /><dd>
-      <dt>都道府県<dt>
+      <dt>担当者</dt>
+      <dd><input type="text" id="name_in_charge" name="name_in_charge" size="25" maxLength="25" value="<?=$r["name_in_charge"]?>" /></dd>
+      <dt>郵便番号</dt>
+      <dd><input type="text" id="postal1" name="postal1" size="4" maxLength="3" value="<?=$r["postal1"]?>" />&nbsp;-&nbsp;<input type="text" id="postal2" name="postal2" size="6" maxLength="4" value="<?=$r["postal2"]?>" /></dd>
+      <dt>都道府県</dt>
       <dd><select id="pref" name="pref">
 <option value="<?=$r["pref"]?>" selected><?=$r["pref"]?></option>
 <option value="北海道">北海道</option>
@@ -140,29 +147,32 @@ include(__DIR__.'/include/home/mypagenav.php');
 <option value="宮崎県">宮崎県</option>
 <option value="鹿児島県">鹿児島県</option>
 <option value="沖縄県">沖縄県</option>
-</select><dd>
-      <dt>市町村<dt>
-      <dd><input type="text" id="city" name="city" size="25" maxLength="16" value="<?=$r["city"]?>" /><dd>
-      <dt>住所<dt>
-      <dd><input type="text" id="address" name="address" size="25" maxLength="50" value="<?=$r["address"]?>" /><dd>
-      <dt>電話番号<dt>
-      <dd><input type="text" id="tel" name="tel" size="25" maxLength="16" value="<?=$r["tel"]?>" /><dd>
+</select></dd>
+      <dt>市町村</dt>
+      <dd><input type="text" id="city" name="city" size="25" maxLength="16" value="<?=$r["city"]?>" /></dd>
+      <dt>住所</dt>
+      <dd><input type="text" id="address" name="address" size="25" maxLength="50" value="<?=$r["address"]?>" /></dd>
+      <dt>電話番号</dt>
+      <dd><input type="text" id="tel" name="tel" size="25" maxLength="16" value="<?=$r["tel"]?>" /></dd>
+      <button onclick=update_basic()>基本情報を更新</button>&nbsp;&nbsp;&nbsp;<span id="basicUpdated"></span>
     </dl>
-    <button onclick=update_basic()>基本情報を更新</button>&nbsp;&nbsp;&nbsp;<span id="basicUpdated"></span>
+    
     <!-- 基本情報が適切に更新された際にメッセージを表示します  -->
     </fieldset>
 
+    <h2>ログイン情報</h2>
     <fieldset>
-      <legend>ログイン情報</legend>
       <dl>
-      <dt>Email<dt>
+      <dt>Email</dt>
       <dd><input type="text" id="email" name="email" size="25" maxLength="50" value="<?=$r["c_id"]?>" /></dd>
       <button onclick=update_email()>メールアドレスを更新</button>
-      <p id="emailUpdated"></p>
-      <dt>ログインパスワード<dt>
-      <dd><input type="text" id="pwd_old" name="pwd_old" size="25" maxLength="25" placeholder="現在のパスワード" /><br /><input type="text" id="pwd_new" name="pwd_new" size="25" maxLength="25" placeholder="新しいパスワード" /><dd>
-      </dl>
-      <button onclick=update_pwd()>パスワードを更新</button>&nbsp;&nbsp;&nbsp;<span id="pwdUpdated"></span>
+      <p id="emailUpdated" class="red"></p>
+    </dl>
+    <dl>
+      <dt>パスワード</dt>
+      <dd><input type="text" id="pwd_old" name="pwd_old" size="25" maxLength="25" placeholder="現在のパスワード" /><br /><input type="text" id="pwd_new" name="pwd_new" size="25" maxLength="25" placeholder="新しいパスワード" /></dd>
+      <button onclick=update_pwd()>パスワードを更新</button>&nbsp;&nbsp;&nbsp;<span id="pwdUpdated"></span>  
+    </dl>
       <!-- ログイン情報が適切に更新された際にメッセージを表示します  -->
      </fieldset>
     

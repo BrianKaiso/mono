@@ -15,9 +15,8 @@ function chkSsid(){
 function db_conn(){
     try {
         //Password:MAMP='root',XAMPP=''
-
         $pdo = new PDO('mysql:dbname=team;charset=utf8;host=localhost','root','root');
-
+        //$pdo = new PDO('mysql:dbname=redturtle44_team;charset=utf8;host=mysql743.db.sakura.ne.jp','redturtle44','aRsA-s-5G1');
         return $pdo;
       } catch (PDOException $e) {
         exit('DB Connection Error'.$e->getMessage());
