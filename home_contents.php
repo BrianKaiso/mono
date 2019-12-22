@@ -77,7 +77,6 @@
 
 ?>
 
-<main> <!-- マイページ コンテンツここから   -->
 <h1>マイページ - コンテンツ登録</h1>
 <?php
 // navigation include
@@ -105,12 +104,10 @@ include(__DIR__.'/include/home/mypagenav.php');
     <form method="post" action="home/home_contents_edit.php" enctype="multipart/form-data">
     <dl>
       <dt>表示先商品</dt><dd><?=$view2?></dd>
-      <dt>タイトル<dt>
-      <dd><input type="text" id="title" name="title" size="80" maxLength="30" placeholder="タイトル(30文字以内)" /><dd>
+      <dt>タイトル</dt><dd><input type="text" id="title" name="title" size="80" maxLength="30" placeholder="タイトル(30文字以内)" /></dd>
       <dt>本文</dt>
-      <dd><textarea type="textarea" id="comment" name="comment" rows="5" cols="100" placeholder="表示した写真や動画についての説明" /></textarea></dd>
-      <dt>メディア<dt>
-      <dd><input type="file" name="upfile"></dd>
+      <dd><textarea type="textarea" id="comment" name="comment" rows="5" cols="100" placeholder="表示した写真や動画についての説明" ></textarea></dd>
+      <dt>メディア</dt><dd><input type="file" name="upfile"></dd>
     </dl>
     <input type="submit" value="登録する">
     </form>
@@ -121,13 +118,6 @@ include(__DIR__.'/include/home/mypagenav.php');
   <?php
    echo $view; 
   ?>
-  
-
-</main> <!-- マイページ コンテンツここまで   -->
-
-<script>
-
-</script>
 
 <?php 
 // html header include

@@ -6,53 +6,54 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script type="text/javascript" src="jquery-2.1.3.min.js"></script>
     <link rel="stylesheet" href="css/home/home.css"> <!-- 運営元ページ用のcss  -->
-    <title>サービスの運営元ホーム</title>
+    <link rel="icon" href="img/favicon.ico"> <!-- ファビコン  -->
+    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+    
+
+    <title>手のひらストーリ 生産者向け情報登録ページ</title>
 </head>
 <body>
-<div class="wrapper">
 
 <!-- headerここから-->
-<header> 
- <div>
-  <a href="home.php"><img src="./img/home/service_logo.png" width="255" height="287" alt="モノガタリ サービスロゴ" /></a>
- </div>
+<header>
+ <div> <!-- ヘッダーメインロゴ   -->
+  <a href="home.php"><img src="./img/main_logo.png" width="108" height="104" alt="手のひらストーリ QRコードから始まるモノガタリ" /></a>
+ </div> <!-- ヘッダーメインロゴ 終わり  -->
 
- <div>
-
+ <div> <!-- ヘッダーナビゲーションここから   -->
  <?php 
- if(isset($_SESSION["chk_ssid"])){
-  if(strcmp($_SESSION["chk_ssid"], session_id()) == 0){ 
+      if(isset($_SESSION["chk_ssid"])){
+      if(strcmp($_SESSION["chk_ssid"], session_id()) == 0){ 
   ?>
-<div id="logged_menu">
-<ul>
-<li>ようこそ！<?php echo $_SESSION["users_name"]  ?>さん</li>
-<li><a href="home_mypage.php">My Page</a></li>
-<li><a href="home_logout.php">Log out</a></li>
-</ul>
-</div>
-
+  <p>ようこそ！<?php echo $_SESSION["users_name"]  ?>さん</p>
 <?php 
- }
-}
+   }
+  }
 ?>
-
-  <ul>
-    <li><a href="home.php">Top</a></li>
-    <li><a href="#">Misson</a></li>
-    <li><a href="#">Service</a></li>
-    <li><a href="#">User</a></li>
-    <li><a href="#">Media</a></li>
-    <li><a href="#">Member</a></li>
-    <?php 
+<ul>
+  <li><a href="home.php">会員ホーム</a></li>
+  <?php 
+      if(isset($_SESSION["chk_ssid"])){
+      if(strcmp($_SESSION["chk_ssid"], session_id()) == 0){ 
+  ?>
+  <li><a href="home_mypage.php">マイページ</a></li>
+  <li><a href="home_logout.php">ログアウト</a></li>
+<?php 
+   }
+  }
+?>
+ <?php 
     if(!isset($_SESSION["chk_ssid"])){
       ?>
-       <li><a href="home_login.php">Log In</a></li>
-       <li><a href="home_newacc.php">New Account</a></li>
-     <?php
-     }
-     ?>
+       <li><a href="home_login.php">ログイン</a></li>
+       <li><a href="home_newacc.php">新規登録</a></li>
+   <?php
+    }
+   ?>
   </ul>
- </div>
+ </div> <!-- ヘッダーナビゲーションここまで  -->
 </header>
 <!-- headerここまで  -->
 
+<!-- mainここから -->
+<main>

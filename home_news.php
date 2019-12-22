@@ -84,7 +84,6 @@
 
 ?>
 
-<main> <!-- マイページ コンテンツここから   -->
 <h1>マイページ - ニュース登録</h1>
 <?php
 // navigation include
@@ -115,7 +114,7 @@ include(__DIR__.'/include/home/mypagenav.php');
       <dt>タイトル<dt>
       <dd><input type="text" id="title" name="title" size="80" maxLength="30" placeholder="タイトル(30文字以内)" /><dd>
       <dt>本文</dt>
-      <dd><textarea type="textarea" id="article" name="article" rows="5" cols="100" placeholder="ニュースの本文部分" /></textarea></dd>
+      <dd><textarea type="textarea" id="article" name="article" rows="5" cols="100" placeholder="ニュースの本文部分"></textarea></dd>
       <dt>メディア<dt>
       <dd><input type="file" name="upfile"></dd>
     </dl>
@@ -129,13 +128,6 @@ include(__DIR__.'/include/home/mypagenav.php');
    echo $view; 
   ?>
   
-
-</main> <!-- マイページ コンテンツここまで   -->
-
-<script>
-
-</script>
-
 <?php 
 // html header include
    include(__DIR__.'/include/home/footer.php'); 
