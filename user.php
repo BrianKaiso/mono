@@ -145,45 +145,45 @@ foreach ($stmt as $r) {
  
  <section> 
   <h1><?php echo $view_p;?></h1> <!-- 1. 商品の画像  -->
-  <h1><?php echo $r_p['p_spec'];?></h1> <!-- 1. 商品の名称・品名・品番など  -->
+  <pre><?php echo $r_p['p_spec'];?></pre> <!-- 1. 商品の名称・品名・品番など  -->
 
 </section>
 
 <section id="story">
-<h2>こだわり</h2>
-  <h1><?php echo $r_p['p_text'];?></h1> <!-- 1. 商品の名称・品名・品番など  -->
-  <a href="user_story.php?shop=aaa&items=xxx">more</a> <!-- 商品詳細ページへのリンク  -->
+<h1>こだわり</h1>
+  <pre><?php echo $r_p['p_text'];?></pre> <!-- 1. 商品の名称・品名・品番など  -->
+  <a href="user_story.php?shop=aaa&items=xxx" class="more">more</a> <!-- 商品詳細ページへのリンク  -->
 </section>
 
 <section id="contents">
-  <h2>使い方</h2> <!-- (3) コンテンツ How to 例: 登録されたうち1件を表示   -->
-  <h2><?php echo $r_c['title'];?></h2> 
-  <h2><?php echo $view_c;?></h2> <!-- 画像イメージ -->
-  <h2><?php echo $r_c['comment'];?></h2> 
-  <a href="user_contents.php?shop=aaa&items=xxx">more</a> <!-- コンテンツページへのリンク  -->
+  <h1>使い方</h1> <!-- (3) コンテンツ How to 例: 登録されたうち1件を表示   -->
+  <pre><?php echo $r_c['title'];?></pre> 
+  <pre><?php echo $view_c;?></pre> <!-- 画像イメージ -->
+  <pre><?php echo $r_c['comment'];?></pre> 
+  <a href="user_contents.php?shop=aaa&items=xxx" class="more">more</a> <!-- コンテンツページへのリンク  -->
  </section>
 
 <section id="news">
-<h2>ニュース</h2> <!-- ニュース -->
-<h2><?php echo $r_n['title'];?></h2> 
-<h2><?php echo $view_n;?></h2> <!-- 画像イメージ -->
-  <h2><?php echo $r_n['text'];?></h2> 
-  <a href="user_news.php?shop=aaa&items=xxx">more</a> <!-- コンテンツページへのリンク  -->
+<h1>ニュース</h1> <!-- ニュース -->
+<pre><?php echo $r_n['title'];?></pre> 
+<pre><?php echo $view_n;?></pre> <!-- 画像イメージ -->
+  <pre><?php echo $r_n['text'];?></pre> 
+  <a href="user_news.php?shop=aaa&items=xxx" class="more">more</a> <!-- コンテンツページへのリンク  -->
   </section>
 
   <section id="profile">
-  <h2>生産者</h2> <!-- (3) コンテンツ How to 例: 登録されたうち1件を表示   -->
-  <h2><?php echo $view_s;?></h2> 
-  <h2><?php echo $r_s['name'];?></h2> 
-  <h2><?php echo $r_s['name_in_charge'];?></h2> <!-- 画像イメージ -->
-  <a href="user_profile.php?shop=aaa&items=xxx">more</a> <!-- コンテンツページへのリンク  -->
+  <h1>生産者</h1> <!-- (3) コンテンツ How to 例: 登録されたうち1件を表示   -->
+  <pre><?php echo $view_s;?></pre> 
+  <pre><?php echo $r_s['name'];?></pre> 
+  <pre><?php echo $r_s['name_in_charge'];?></pre> <!-- 画像イメージ -->
+  <a href="user_profile.php?shop=aaa&items=xxx" class="more">more</a> <!-- コンテンツページへのリンク  -->
  </section>
 
   <section  id="list">
-  <h2>製品一覧</h2> <!-- (3) コンテンツ How to 例: 登録されたうち1件を表示   -->
-  <h2><?php echo $r_p['p_name'];?></h2> 
-  <h2><?php echo $view_p;?></h2> <!-- 画像イメージ -->
-  <a href="user_list.php?shop=aaa&items=xxx">more</a> <!-- コンテンツページへのリンク  -->
+  <h1>製品一覧</h1> <!-- (3) コンテンツ How to 例: 登録されたうち1件を表示   -->
+  <pre><?php echo $r_p['p_name'];?></pre> 
+  <pre><?php echo $view_p;?></pre> <!-- 画像イメージ -->
+  <a href="user_list.php?shop=aaa&items=xxx" class="more">more</a> <!-- コンテンツページへのリンク  -->
  </section>
 
  </main>

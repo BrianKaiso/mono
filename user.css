@@ -197,8 +197,16 @@ body {
   color: #fff;
 }
 
-iframe {
-  width: 100%;
-  max-width: 100%;
-  height: auto;
+h1 {
+  margin: 10px;
+}
+
+pre {
+  margin: 10px;
+  white-space: pre-wrap; /* 折り返す */
+  width: 90%; /*画面サイズに合わせる*/
+}
+
+.more {
+  margin: 10px;
 }
