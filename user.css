@@ -1,7 +1,24 @@
+body {
+  font-family: "游ゴシック", "Yu Gothic", YuGothic, "Hiragino Kaku Gothic ProN",
+    "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, "ＭＳ ゴシック", sans-serif;
+}
+
+.icon {
+  display: block;
+  position: fixed;
+  /* right: 13px;
+  top: 12px;
+  width: 42px;
+  height: 51px; */
+  cursor: pointer;
+  z-index: 2;
+  text-align: center;
+}
+
 /* ハンバーガーメニュー */
 .globalMenu {
   position: fixed;
-  z-index: 2;
+  z-index: 3;
   top: 0;
   left: 0;
   background: #fff;
@@ -53,7 +70,7 @@
   width: 42px;
   height: 51px;
   cursor: pointer;
-  z-index: 3;
+  z-index: 4;
   background: #666;
   text-align: center;
 }
@@ -103,10 +120,16 @@
   transform: rotate(45deg);
 }
 
+/* ビデオタグ */
+#video {
+  z-index: 1;
+}
+
 /* 見出し部分_製品名と生産者名 */
 
 .link1 {
-  font-size: 2rem;
+  margin: 1rem;
+  font-size: 1.2rem;
   display: flex;
   justify-content: space-between;
 }
@@ -120,6 +143,7 @@
 }
 
 .iine {
+  padding-top: 1rem;
 }
 
 .midashi2 {
@@ -131,4 +155,50 @@
 }
 
 .follow {
+  padding-top: 1rem;
+}
+
+/* コンテンツメニュー */
+.menu1 {
+  display: flex;
+  justify-content: space-between;
+}
+.menu2 {
+  display: flex;
+  justify-content: space-around;
+}
+
+.btn1 {
+  font-family: "Yu Gothic", YuGothic, Verdana, "Hiragino Kaku Gothic ProN",
+    "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "メイリオ", Meiryo,
+    sans-serif;
+  text-align: center;
+  padding-top: 5px;
+  width: 200px;
+}
+
+.btn1_e {
+  display: inline-block;
+  max-width: 180px;
+  text-align: left;
+  border: 2px solid #666;
+  font-size: 16px;
+  color: #333;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 8px 16px;
+  border-radius: 4px;
+  transition: 0.4s;
+}
+
+.btn1_e hover {
+  background-color: #666;
+  border-color: #666;
+  color: #fff;
+}
+
+iframe {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
 }

@@ -11,44 +11,42 @@ parse_str($query);
 //商品id名：$p_code
 
 // //２．データ登録SQL作成
+// プロダクトのDBより
 $stmt_p = $pdo->prepare("SELECT * FROM mst_product WHERE p_code = $p_code");
 $status_p = $stmt_p->execute();
 foreach ($stmt_p as $r_p) {
   // データベースのフィールド名で出力。
   // echo $row['p_name'];みたいな感じで書いたらHTML内に持ってこれるで。
 }
+$view_p .="<img src=\"img/{$r_p["p_img"]}\" />";
+
+// コンテンツのDBより
+$stmt_c = $pdo->prepare("SELECT * FROM mst_content WHERE p_code = $p_code");
+$status_c = $stmt_c->execute();
+foreach ($stmt_c as $r_c) {
+}
+$view_c .="<img src=\"img/{$r_p["c_file"]}\" />";
+
+// ニュースのDBより
+$stmt_n = $pdo->prepare("SELECT * FROM mst_intro WHERE c_code = $c_code");
+$status_n = $stmt_n->execute();
+foreach ($stmt_n as $r_n) {
+}
+$view_n .="<img src=\"img/{$r_n["media"]}\" />";
+
+// 生産者のDBより
+$stmt_s = $pdo->prepare("SELECT * FROM mst_creater WHERE c_code = $c_code");
+$status_s = $stmt_s->execute();
+foreach ($stmt_s as $r_s) {
+}
+$view_s .="<img src=\"img/{$r_s["media"]}\" />";
+
+// top動画のDBより
 $stmt = $pdo->prepare("SELECT * FROM mst_asset WHERE a_code = $a_code");
 $status = $stmt->execute();
 foreach ($stmt as $r) {
-  // データベースのフィールド名で出力。
-  // echo $row['p_name'];みたいな感じで書いたらHTML内に持ってこれるで。
-
   }
 
-// 各コンテンツのデータ抜き取り 始まり
-$sql = "SELECT * FROM mst_content WHERE p_code='{$id}'";
-
-//２．$sqlをprepareに渡してステートメントに入れる
-$stmt = $pdo->prepare($sql);
-$status = $stmt->execute(); // 成功ならtrue, 失敗ならfalse
-
-if($status==false) {
-    sql_error($stmt); // include -> functions.php > function sql_error();
-  }else{
-    $r = $stmt->fetch();
-    // var_dump($r);
-}
-
-$pdo=null;
-// DB接続エンドHere
-
-$view ="<div class=\"contentBox1\">";
-// $view .="<img src=\"img/{$r["c_file"]}\" />";
-$view .= "</div><div class=\"contentBox2\"><h1>{$r["c_title"]}</h1>";
-$view .= "<h2>{$r["comment"]}</h2>";
-$view .= "<p>{$r["c_date"]}</p>";
-$view .= "</div>"; // 終了タグ
-// exit;
 ?>
 
 <!DOCTYPE html>
@@ -61,14 +59,16 @@ $view .= "</div>"; // 終了タグ
     <link rel="stylesheet" href="reset.css" />
     <link rel="stylesheet" href="user.css" />
     <link rel="stylesheet" href="video.css" />
-    <title>サービス名</title>
+    <title>手のひらストーリー</title>
 </head>
 <body>
 <div id="wrapper"> <!-- すべてのコンテンツを囲むwrapper   -->
 <!-- include header.php ここまで    -->
 
-<header>
-<a href="index.php?shop=aaaa&itemsxxxx"><img src="../mono/img/image_preview.png" style=width:80px; alt="手のひらストーリー"></a> <!-- (1) サービストップページ URLに生産者名と商品ID   -->
+
+<nav class="icon">
+<a  href="index.php?shop=aaaa&itemsxxxx"><img src="../mono/img/image_preview.png" style=width:80px; alt="手のひらストーリー"></a> <!-- (1) サービストップページ URLに生産者名と商品ID   -->
+</nav>
 
 <!-- include navitation.php ここから  -->
  <nav class="globalMenu">
@@ -90,7 +90,7 @@ $view .= "</div>"; // 終了タグ
   <li><a href="home.php">手のひらストーリーって？</a></li> <!-- サービスの説明ページへ移動  -->
 </ul>
 </nav>
- <!-- include navitation.php ここまで  -->
+<!-- include navitation.php ここまで  -->
 <!-- ハンバーガーメニュー -->
 
 <div class="navToggle">
@@ -99,9 +99,6 @@ $view .= "</div>"; // 終了タグ
 <span></span> 
 <span>menu</span> 
 </div>
-
-</header>
-
  <!--    
    headerで表示する要素
    1. 商品トップコンテンツ (動画 or 写真)
@@ -117,23 +114,25 @@ $view .= "</div>"; // 終了タグ
 </video>
 
 <div class="link1">
-<ul class=seihin>
-  <li class=midashi1>製品名</li>
-  <li class=iine><a href="nice.php">いいね！</a></li>
-</ul>
-<ul class=seisan>
-  <li class=midashi2>生産者名</li>
-  <li class=follow><a href="follow.php">商品をフォロー</a></li>
-</ul>
+<div class="seihin">
+  <p class="midashi1">製品名</p>
+  <p class="iine"><a href="nice.php">いいね！</a></p>
 </div>
-
-<ul>
-  <li><a href="user_story.php?shop=aaa">こだわり</a></li> <!-- ストーリーにあたる  -->
-  <li><a href="user_contents.php?shop=aaa&items=xxx">使い方</a></li> <!--  (3) How toコンテンツページ URLは生産者名、商品ID、コンテンツID  -->
-  <li><a href="user_news.php?shop=aaa&items=xxx">お知らせ</a></li> <!-- (4) ニュース URLは生産者生と商品ID   -->
-  <li><a href="user_list.php?shop=aaa&items=xxx">他の製品</a></li> <!-- list.php   -->
-  <li><a href="user_profile.php?shop=aaaa">生産者紹介</a></li> <!-- (2) 生産者紹介・こだわり URLは生産者名   --> 
-</ul>
+<div class="seisan">
+  <p class="midashi2">生産者名</p>
+  <p class="follow"><a href="follow.php">商品をフォロー</a></p>
+</div>
+</div>
+<div class="menu1">
+  <div class=btn1><a href="#story" class="btn1_e">こだわり</a></div> <!-- ストーリーにあたる  -->
+  <div class=btn1><a href="#contents" class="btn1_e">使い方</a></div> <!--  (3) How toコンテンツページ URLは生産者名、商品ID、コンテンツID  -->
+  <div class=btn1><a href="#news" class="btn1_e">お知らせ</a></div> <!-- (4) ニュース URLは生産者生と商品ID   -->
+</div>
+<div class="menu2">
+  <div class=btn1><a href="#profile" class="btn1_e">生産者紹介</a></div> <!-- (2) 生産者紹介・こだわり URLは生産者名   --> 
+  <div class=btn1><a href="#list" class="btn1_e">他の製品</a></div> <!-- list.php   -->
+  <div class=btn1><a href="user_newaccount.php?shop=aaaa" class="btn1_e">マイページ</a></div> <!-- loginへ   --> 
+</div>
 
  <main>
  <!--  
@@ -144,33 +143,47 @@ $view .= "</div>"; // 終了タグ
    4. ニュース 例 3件だけ表示
  --> 
  
-  <iframe width=100% height=600px scrolling=no src=../team/creator_test.jpg></iframe>
-  <!-- 新着の１件をもってきたい -->
-  <p>タイトル</p>
-  <p>ストーリー</p>
+ <section> 
+  <h1><?php echo $view_p;?></h1> <!-- 1. 商品の画像  -->
+  <h1><?php echo $r_p['p_spec'];?></h1> <!-- 1. 商品の名称・品名・品番など  -->
 
-<section> 
-  <h2><?php echo $r_p['p_name'];?></h2> <!-- 1. 商品の名称・品名・品番など  -->
-  <a href="products.php?shop=aaa&items=xxx">もっと見る</a> <!-- 商品詳細ページへのリンク  -->
-  <!-- 商品詳細  -->
-  <!-- <p>追加画像など・・・</p> -->
 </section>
 
-<section>
+<section id="story">
+<h2>こだわり</h2>
+  <h1><?php echo $r_p['p_text'];?></h1> <!-- 1. 商品の名称・品名・品番など  -->
+  <a href="user_story.php?shop=aaa&items=xxx">more</a> <!-- 商品詳細ページへのリンク  -->
+</section>
+
+<section id="contents">
   <h2>使い方</h2> <!-- (3) コンテンツ How to 例: 登録されたうち1件を表示   -->
-  <h2><?php echo $r_p['p_name'];?></h2> 
-  <a href="contens.php?shop=aaa&items=xxx">もっと見る</a> <!-- コンテンツページへのリンク  -->
+  <h2><?php echo $r_c['title'];?></h2> 
+  <h2><?php echo $view_c;?></h2> <!-- 画像イメージ -->
+  <h2><?php echo $r_c['comment'];?></h2> 
+  <a href="user_contents.php?shop=aaa&items=xxx">more</a> <!-- コンテンツページへのリンク  -->
  </section>
 
-<section>
-  <h2>お知らせ</h2>
-  <dl><dt>タイトル</dt><dd>本文抜粋 本文抜粋 本文抜粋 本文抜粋 本文抜粋 本文抜粋 本文抜粋...<a href="#"><span>もっと読む</span></a></dd></dl>
+<section id="news">
+<h2>ニュース</h2> <!-- ニュース -->
+<h2><?php echo $r_n['title'];?></h2> 
+<h2><?php echo $view_n;?></h2> <!-- 画像イメージ -->
+  <h2><?php echo $r_n['text'];?></h2> 
+  <a href="user_news.php?shop=aaa&items=xxx">more</a> <!-- コンテンツページへのリンク  -->
   </section>
 
-  <section>
+  <section id="profile">
+  <h2>生産者</h2> <!-- (3) コンテンツ How to 例: 登録されたうち1件を表示   -->
+  <h2><?php echo $view_s;?></h2> 
+  <h2><?php echo $r_s['name'];?></h2> 
+  <h2><?php echo $r_s['name_in_charge'];?></h2> <!-- 画像イメージ -->
+  <a href="user_profile.php?shop=aaa&items=xxx">more</a> <!-- コンテンツページへのリンク  -->
+ </section>
+
+  <section  id="list">
   <h2>製品一覧</h2> <!-- (3) コンテンツ How to 例: 登録されたうち1件を表示   -->
   <h2><?php echo $r_p['p_name'];?></h2> 
-  <a href="contens.php?shop=aaa&items=xxx">もっと見る</a> <!-- コンテンツページへのリンク  -->
+  <h2><?php echo $view_p;?></h2> <!-- 画像イメージ -->
+  <a href="user_list.php?shop=aaa&items=xxx">more</a> <!-- コンテンツページへのリンク  -->
  </section>
 
  </main>
@@ -210,6 +223,24 @@ if(a_law == 1){
   var video_law = document.getElementById("video");
   video_law.id = "video_2";
 }
+
+// スクロールアニメーション付与
+$(function(){
+   // #で始まるアンカーをクリックした場合に処理
+   $('a[href^=#]').click(function() {
+      // スクロールの速度
+      var speed = 400; // ミリ秒
+      // アンカーの値取得
+      var href= $(this).attr("href");
+      // 移動先を取得
+      var target = $(href == "#" || href == "" ? 'html' : href);
+      // 移動先を数値で取得
+      var position = target.offset().top;
+      // スムーススクロール
+      $('body,html').animate({scrollTop:position}, speed, 'swing');
+      return false;
+   });
+});
 
 </script>
 
