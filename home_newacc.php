@@ -25,7 +25,7 @@ if(isset($errMsg)){
 }
 ?>
 
-<main class="login">
+<div class="login">
 <div id="errmsg"></div> 
 <?php //echo $outPut; ?>
 
@@ -113,7 +113,8 @@ if(isset($errMsg)){
 </form>
 </div> <!-- loginBox3 ends here -->
 
- </main> <!-- contents ends here-->
+ </div> 
+ <!-- フォームここで終わり-->
 
  <script>
      // フォーム入力: パスワードの表示オンオフ

@@ -9,6 +9,8 @@
    include(__DIR__.'/include/home/header.php'); 
 
 ?>
+
+
 <h1>運営者元ホームページ</h1>
 
 

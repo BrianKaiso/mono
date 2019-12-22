@@ -53,12 +53,12 @@ $pdo=null;
 // JSの処理で使用するのでセッションIDをJSの変数に渡しておく
 
 ?>
+
 <script>
-const mySession = <?=$_SESSION["users_id"]?>;
-console.log(mySession);
+// ユーザーID取得
+let mySession = <?=$_SESSION["users_id"]?> ;
 </script>
 
-<main> <!-- マイページ コンテンツここから   -->
 <h1>マイページ</h1>
 <?php
 // navigation include
@@ -148,7 +148,7 @@ include(__DIR__.'/include/home/mypagenav.php');
       <dt>電話番号<dt>
       <dd><input type="text" id="tel" name="tel" size="25" maxLength="16" value="<?=$r["tel"]?>" /><dd>
     </dl>
-    <button onclick=update_basic()>基本情報を更新</button>&nbsp;&nbsp;&nbsp;<span id="basicUpdated"><span>
+    <button onclick=update_basic()>基本情報を更新</button>&nbsp;&nbsp;&nbsp;<span id="basicUpdated"></span>
     <!-- 基本情報が適切に更新された際にメッセージを表示します  -->
     </fieldset>
 
@@ -162,7 +162,7 @@ include(__DIR__.'/include/home/mypagenav.php');
       <dt>ログインパスワード<dt>
       <dd><input type="text" id="pwd_old" name="pwd_old" size="25" maxLength="25" placeholder="現在のパスワード" /><br /><input type="text" id="pwd_new" name="pwd_new" size="25" maxLength="25" placeholder="新しいパスワード" /><dd>
       </dl>
-      <button onclick=update_pwd()>パスワードを更新</button>&nbsp;&nbsp;&nbsp;<span id="pwdUpdated"><span>
+      <button onclick=update_pwd()>パスワードを更新</button>&nbsp;&nbsp;&nbsp;<span id="pwdUpdated"></span>
       <!-- ログイン情報が適切に更新された際にメッセージを表示します  -->
      </fieldset>
     
@@ -171,8 +171,6 @@ include(__DIR__.'/include/home/mypagenav.php');
 
 
 </div>
-
-</main> <!-- マイページ コンテンツここまで   -->
 
 <script>
 // 基本情報更新

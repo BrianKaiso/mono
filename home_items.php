@@ -61,7 +61,6 @@
 
 ?>
 
-<main> <!-- マイページ コンテンツここから   -->
 <h1>マイページ - 商品登録</h1>
 <?php
 // navigation include
@@ -91,9 +90,9 @@ include(__DIR__.'/include/home/mypagenav.php');
       <dt>商品名<dt>
       <dd><input type="text" id="title" name="title" size="80" maxLength="30" placeholder="タイトル(30文字以内)" /><dd>
       <dt>商品仕様</dt>
-      <dd><textarea type="textarea" id="spec" name="spec" rows="5" cols="100" placeholder="規格・容量・サイズなどなど" /></textarea></dd>
+      <dd><textarea type="textarea" id="spec" name="spec" rows="5" cols="100" placeholder="規格・容量・サイズなどなど"></textarea></dd>
       <dt>商品紹介</dt>
-      <dd><textarea type="textarea" id="desc" name="desc" rows="10" cols="100" placeholder="商品の魅力をたっぷりと語ってください！" /></textarea></dd>
+      <dd><textarea type="textarea" id="desc" name="desc" rows="10" cols="100" placeholder="商品の魅力をたっぷりと語ってください！"></textarea></dd>
       <dt>メディア<dt>
       <dd><input type="file" name="upfile"></dd>
     </dl>
@@ -107,13 +106,6 @@ include(__DIR__.'/include/home/mypagenav.php');
    echo $view; 
   ?>
   
-
-</main> <!-- マイページ コンテンツここまで   -->
-
-<script>
-
-</script>
-
 <?php 
 // html header include
    include(__DIR__.'/include/home/footer.php'); 

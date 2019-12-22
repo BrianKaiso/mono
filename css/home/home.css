@@ -1,0 +1,84 @@
+@charset "UTF-8";
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* 相対サイズ指定の基準値、フォント */
+html{
+    font-size:15px;
+    letter-spacing: 0.05em;
+    /* font-family: "Helvetica Neue", "Avenir", "Corbel","メイリオ", "游ゴシック", "hiragino kaku gothic pro", "Yu Gothic"; */
+} 
+
+html,
+body {
+  width: 100%;
+  color: #555555;
+}
+
+/* フォント指定  */
+body {
+    font-family: -apple-system, blinkMacSystemFont, /* Macの欧文はSan Francisco (OS X 10.11以降) */
+                 'Helvetica Neue',            /* Macの欧文 (OS X 10.10以前) */
+                 /* 'Segoe UI',                  Windowsの欧文 */
+                 'Hiragino Kaku Gothic ProN', /* Macのヒラギノ */
+                 Meiryo,                      /* Windowsのメイリオ */
+                 sans-serif;
+}
+
+/* ***********  ヘッダーここから  ************ */
+header {
+    display: flex;
+    justify-content: space-between; /* 左右均等分布 */
+    /* padding: 5px;
+    margin: 10px 0 0 20px; */
+}
+
+header ul {
+    display: flex;
+    list-style: none;
+    align-items: center; /* 上下中央揃え */
+    margin:16px 10px;
+}
+    
+header ul li a {
+    text-align: center;
+    padding: 6px 12px;
+}
+
+header ul li a:hover {
+    /* background-color: #f8f8f8; */
+    background-color:#ffc39e;
+    /* transition-duration: 0.4s; */
+    border-radius: 5px;
+    color:#353535;
+}
+
+/* ログイン時に表示される生産者のお名前  */
+header p{
+    text-align:right;
+    margin:15px 22px 0 0;
+    font-size:1.3rem;
+}
+
+/* ロゴの位置調整 */
+header img{
+ margin:10px;
+}
+/* ************  ヘッダーここまで  *************** */
+
+/* ************  リンクここまで ************** */
+a {
+    text-decoration: none;
+    color: #555555;
+}
+
+/* ************  リンクここまで ************** */
+
+/* ********** main ここから **************** */
+main{
+ width:100%;
+ padding:10px;
+}
