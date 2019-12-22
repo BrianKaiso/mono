@@ -47,6 +47,19 @@ $status = $stmt->execute();
 foreach ($stmt as $r) {
   }
 
+// いいね機能
+// カウント数取得関数
+function get_count($file) {
+	$filename = 'data/'.$file.'.dat';
+	$fp = @fopen($filename, 'r');
+	if ($fp) {
+		$vote = fgets($fp, 9182);
+	} else {
+		$vote = 0;
+	}
+	return $vote;
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -59,6 +72,7 @@ foreach ($stmt as $r) {
     <link rel="stylesheet" href="reset.css" />
     <link rel="stylesheet" href="user.css" />
     <link rel="stylesheet" href="video.css" />
+    <link rel="stylesheet" href="css/style.css">
     <title>手のひらストーリー</title>
 </head>
 <body>
@@ -116,7 +130,11 @@ foreach ($stmt as $r) {
 <div class="link1">
 <div class="seihin">
   <p class="midashi1">製品名</p>
-  <p class="iine"><a href="nice.php">いいね！</a></p>
+  <!-- <section> -->
+  <p class="btn_vote" id="vote_01"></p>
+  </div><!-- /btn_area -->
+  <!-- </section> -->
+  <!-- <p class="iine"><a href="nice.php">いいね！</a></p> -->
 </div>
 <div class="seisan">
   <p class="midashi2">生産者名</p>
@@ -198,6 +216,9 @@ foreach ($stmt as $r) {
 
 </header>  <!-- wrapper ここで終わり   -->
 
+<!-- いいね用Ajax -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
 <script>
 
 $(function(){
@@ -241,6 +262,30 @@ $(function(){
       return false;
    });
 });
+
+// いいね機能
+$(function() {
+	allowAjax = true;
+	$('.btn_vote').click(function() {
+		if (allowAjax) {
+			allowAjax = false;
+			$(this).toggleClass('on');
+			var id = $(this).attr('id');
+			$(this).hasClass('on') ? Vote(id, 'plus') : Vote(id, 'minus');
+		}
+	});
+});
+function Vote(id, plus) {
+	cls = $('.' + id);
+	cls_num = Number(cls.html());
+	count = plus == 'minus' ? cls_num - 1 : cls_num + 1;
+	$.post('vote.php', {'file': id, 'count': count}, function(data) {
+		if (data == 'success') cls.html(count);
+		setTimeout(function() {
+			allowAjax = true;
+		}, 1000);
+	});
+}
 
 </script>
 
