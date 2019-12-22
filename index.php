@@ -9,7 +9,7 @@ $pdo = db_conn();
 $stmt = $pdo->prepare("SELECT * FROM mst_content INNER JOIN mst_creater ON mst_content.c_code = mst_creater.c_code ORDER BY time_stamp DESC");
 $status = $stmt->execute();
 
-$stmt_n = $pdo->prepare("SELECT * FROM dat_news INNER JOIN mst_creater ON dat_news.c_code = mst_creater.c_code ORDER BY time_stamp DESC");
+$stmt_n = $pdo->prepare("SELECT * FROM mst_creater INNER JOIN dat_news ON mst_creater.c_code = dat_news.c_code ");
 $status_n = $stmt_n->execute();
 // $stmt = $pdo->prepare("SELECT * FROM mst_content");
 // $status = $stmt->execute();
@@ -30,7 +30,7 @@ if($status==false) {
   sql_error();
 }else{
   while( $r = $stmt->fetch(PDO::FETCH_ASSOC)){
-    $view .= '<div class="new_box">';
+    $view .= '<div class="item">';
     $view .= '<img class="new" src="upload/'.$r["c_file"].'">';
     $view .= '<p>'.$r["name"].'</p>';
     $view .= '</div>';
@@ -41,9 +41,11 @@ if($status==false) {
   sql_error();
 }else{
   while( $r_n = $stmt_n->fetch(PDO::FETCH_ASSOC)){
-    $view_n .= '<div class="new_box">';
+    $view_n .= '<div class="item">';
     $view_n .= '<img class="new" src="upload/'.$r_n["n_img"].'">';
-    $view_n .= '<p>'.$r_n["name"].'</p>';
+    $view_n .= '<p>'.$r_n["name"].'</p><br>';
+    $view_n .= '<p>'.$r_n["title"].'</p><br>';
+    $view_n .= '<p>'.$r_n["article"].'</p><br>';
     $view_n .= '</div>';
   }
 }
@@ -66,14 +68,17 @@ if($status==false) {
     <link rel="stylesheet" type="text/css" href="css/slick-theme.css"/>
     <link rel="stylesheet" type="text/css" href="css/slick.css"/>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-    <title>サービス名</title>
-</head>
-<body>
 
-<p>メイン背景</p>
-<p>メインロゴ</p>
-<!-- ハンバーガーメニュー -->
-<header>
+    <!-- owlcorousel -->
+    <link rel="stylesheet" href="mono/css/owl.carousel.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="mono/js/owl.carousel.js"></script> 
+    <title>サービス名</title>
+    </head>
+    <body>
+    
+    <!-- ハンバーガーメニュー -->
+    <header>
   <nav class="globalMenu">
      <ul>
        <li><a href="top.php?shop=aaaa&itemsxxxx">HOME</a></li> <!-- (1) サービストップページ URLに生産者名と商品ID   -->
@@ -97,7 +102,35 @@ if($status==false) {
 <!-- ハンバーガーメニューここまで -->
 
 <!-- トップ画像 -->
-<img id="top_img" src=img/index/index01.png>
+<!-- <div class="video_wrapper"> -->
+<div class="video_wrapper">
+  <img id="catchcopy" src="img/index/catchcopy.png">
+  <video id="video" loop autoplay muted>
+    <source src="img/DJI_00622.mp4#t=11,60" type="video/mp4;" codecs="avc1.42E01E, mp4a.40.2">
+  </video>
+</div>
+
+<div id = "intro">
+  <div class="intro_child">
+    <!-- <h1>てのひらストーリー</h1> -->
+    <p>QRを読み込んだら産地へひとっとび。モノにまつわるストーリーをお届けします。</p>
+  </div>
+  <div class="intro_child">
+    <img id="hazemoto" src="img/index/nokasa.jpg">
+  </div>
+</div>
+
+
+
+<div id="user">
+  <div class="container">
+  <a href="home.php" class="btn-icon">買いたい方はこちら</a>
+  </div>
+  <!-- <a class="btn-flat-border" href="home.php">生産者登録</a> -->
+</div>
+
+<!-- </div> -->
+<!-- <img id="top_img" src=img/index/index01.png> -->
 <!-- <p>都道府県</p>
 <p>カテゴリー</p>
 <p>コンテンツ</p>
@@ -105,13 +138,14 @@ if($status==false) {
 <h1>検索フォーム</h1>
 <p>検索</p> -->
 
+
 <!-- 新着 -->
-<h1 class="title">新着</h1>
+<h1 class="title">--------  新着  --------</h1>
   <div class="container jumbotron" id="view"><?=$view?></div>
 
 
 <h1 class="title">ニュース</h1>
-<div class="container jumbotron" id="view"><?=$view?></div>
+<div class="container jumbotron" id="view"><?=$view_n?></div>
 
 <a class="btn-flat-border" href="home.php">生産者登録</a>
 
@@ -124,6 +158,10 @@ if($status==false) {
 <a href="">運営会社</a>
 
 </footer>
+
+<div class="test">
+  <img class="test_img" src="upload/images.jpeg" alt="">
+</div>
 
 <script>
 
@@ -186,35 +224,4 @@ function popupWindow(url) {
 </script>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-  <script type="text/javascript" src="slick/slick.min.js"></script>
-  <script type="text/javascript">
-    $(document).ready(function(){
-      $('.container').slick({
-  centerMode: true,
-  centerPadding: '60px',
-  slidesToShow: 3,
-  responsive: [
-    {
-      breakpoint: 768,
-      settings: {
-        arrows: false,
-        centerMode: true,
-        centerPadding: '40px',
-        slidesToShow: 3
-      }
-    },
-    {
-      breakpoint: 480,
-      settings: {
-        arrows: false,
-        centerMode: true,
-        centerPadding: '40px',
-        slidesToShow: 1
-      }
-    }
-  ]
-});
-    });
-    
-  </script>
 </body>
