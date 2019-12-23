@@ -31,7 +31,7 @@ if($status==false) {
 }else{
   while( $r = $stmt->fetch(PDO::FETCH_ASSOC)){
     $view .= '<div class="swiper-slide">';
-    $view .= '<img class="new" src="upload/'.$r["c_file"].'">';
+    $view .= '<img class="new" src="home/contents//'.$r["c_code"].'/'.$r["c_file"].'">';
     $view .= '<p>'.$r["name"].'</p>';
     $view .= '</div>';
   }
@@ -42,7 +42,7 @@ if($status==false) {
 }else{
   while( $r_n = $stmt_n->fetch(PDO::FETCH_ASSOC)){
     $view_n .= '<div class="swiper-slide">';
-    $view_n .= '<img class="new" src="upload/'.$r_n["n_img"].'">';
+    $view_n .= '<img class="new" src="home/news/'.$r_n["c_code"].'/'.$r_n["n_img"].'">';
     $view_n .= '<p>'.$r_n["name"].'</p><br>';
     $view_n .= '<p>'.$r_n["title"].'</p><br>';
     $view_n .= '<p>'.$r_n["article"].'</p><br>';
