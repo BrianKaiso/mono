@@ -12,238 +12,249 @@ body {
 }
 
 /* 相対サイズ指定の基準値、フォント */
-html{
-    font-size:17px;
-    letter-spacing: 0.05em;
-    /* font-family: "Helvetica Neue", "Avenir", "Corbel","メイリオ", "游ゴシック", "hiragino kaku gothic pro", "Yu Gothic"; */
-} 
+html {
+  font-size: 17px;
+  letter-spacing: 0.05em;
+  /* font-family: "Helvetica Neue", "Avenir", "Corbel","メイリオ", "游ゴシック", "hiragino kaku gothic pro", "Yu Gothic"; */
+}
 
 /* フォント指定  */
 body {
-    font-family: -apple-system, blinkMacSystemFont, /* Macの欧文はSan Francisco (OS X 10.11以降) */
-                 'Helvetica Neue',            /* Macの欧文 (OS X 10.10以前) */
-                 /* 'Segoe UI',                  Windowsの欧文 */
-                 'Hiragino Kaku Gothic ProN', /* Macのヒラギノ */
-                 Meiryo,                      /* Windowsのメイリオ */
-                 sans-serif;
+  font-family: -apple-system, blinkMacSystemFont,
+    /* Macの欧文はSan Francisco (OS X 10.11以降) */ "Helvetica Neue",
+    /* Macの欧文 (OS X 10.10以前) */
+      /* 'Segoe UI',                  Windowsの欧文 */
+      "Hiragino Kaku Gothic ProN",
+    /* Macのヒラギノ */ Meiryo, /* Windowsのメイリオ */ sans-serif;
 }
 
 /* ***********  ヘッダーここから  ************ */
 header {
-    display: flex;
-    justify-content: space-between; /* 左右均等分布 */
-    /* padding: 5px;
+  display: flex;
+  justify-content: space-between; /* 左右均等分布 */
+  /* padding: 5px;
     margin: 10px 0 0 20px; */
 }
 
 header ul {
-    display: flex;
-    align-items: center; /* 上下中央揃え */
-    margin:16px 10px;
+  display: flex;
+  align-items: center; /* 上下中央揃え */
+  margin: 16px 10px;
 }
-    
+
 header ul li a {
-    text-align: center;
-    padding: 6px 12px;
+  text-align: center;
+  padding: 6px 12px;
 }
 
 header ul li a:hover {
-    /* background-color: #f8f8f8; */
-    background-color:#ffc39e;
-    /* transition-duration: 0.4s; */
-    border-radius: 5px;
-    color:#353535;
+  /* background-color: #f8f8f8; */
+  background-color: #ffc39e;
+  /* transition-duration: 0.4s; */
+  border-radius: 5px;
+  color: #353535;
 }
 
 /* ログイン時に表示される生産者のお名前  */
-header p{
-    text-align:right;
-    margin:15px 22px 0 0;
-    font-size:1.3rem;
+header p {
+  text-align: right;
+  margin: 15px 22px 0 0;
+  font-size: 1.3rem;
 }
 
 /* ロゴの位置調整 */
-header img{
- margin:15px;
+header img {
+  margin: 15px;
 }
 /* ************  ヘッダーここまで  *************** */
 
 /* ************  リンクここまで ************** */
 a {
-    text-decoration: none;
-    color: #555555;
+  text-decoration: none;
+  color: #555555;
 }
 /* ************  リンクここまで ************** */
 
 /* ************** ul 基本設定 **************** */
-ul{
-    list-style: none;
+ul {
+  list-style: none;
 }
 /* ************** ul 基本設定ここまで **************** */
 
 /* ************** 文字要素ベースサイズ指定 *********** */
-h1{
-  font-size:1.4rem;  
+h1 {
+  font-size: 1.4rem;
   text-align: center;
-  padding:5px 0;
+  padding: 5px 0;
   border-radius: 7px;
-  color:#df7e3f;
+  color: #df7e3f;
 }
 
-h2{
-  font-size:1.1rem;  
+h2 {
+  font-size: 1.1rem;
   text-align: center;
-  padding:5px 0;
+  padding: 5px 0;
   border-radius: 7px;
-  color:#df7e3f;
+  color: #df7e3f;
 }
 
-h1, h2{
-  background-color:#fffaf7;
+h1,
+h2 {
+  background-color: #fffaf7;
 }
 
-h3{
-    font-size:0.9rem;
+h3 {
+  font-size: 0.9rem;
 }
 
-p{
-    line-height: 2.0;
+p {
+  line-height: 2;
 }
 
 /* ********** mainの中にある要素の設定ここから ここから **************** */
-main{
- box-sizing: border-box;
- width:100%;
- padding:0 20px;
- text-align:center;
+main {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0 20px;
+  text-align: center;
 }
 
 /* マイページのナビゲーション  */
-ul#mypage_nav{
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin:1.5em 0;
-    align-items: center;
+ul#mypage_nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 1.5em 0;
+  align-items: center;
 }
 
 ul#mypage_nav li a {
-    text-align: center;
-    padding: 6px 12px;
+  text-align: center;
+  padding: 6px 12px;
 }
 
 ul#mypage_nav li a:hover {
-    background-color:#ffc39e;
-    border-radius: 5px;
-    color:#353535;
+  background-color: #ffc39e;
+  border-radius: 5px;
+  color: #353535;
 }
 
-ul#mypage_nav span{
-    background-color:#ffc39e;
-    padding:6px 12px;
-    margin-right:1em;
-    border-radius: 7px;
+ul#mypage_nav span {
+  background-color: #ffc39e;
+  padding: 6px 12px;
+  margin-right: 1em;
+  border-radius: 7px;
 }
 
 /* form 周り */
-fieldset{
- box-sizing: border-box;
- width:100%;
- padding:15px 20px; 
- margin:0 auto;
- margin:1em 0;
- border:2px dotted #ffc39e;
+fieldset {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 15px 20px;
+  margin: 0 auto;
+  margin: 1em 0;
+  border: 2px dotted #ffc39e;
 }
 
-fieldset dl{
-    text-align:left;
-    margin-bottom:1.5em;
+fieldset dl {
+  text-align: left;
+  margin-bottom: 1.5em;
 }
 
 fieldset dl dt {
-    clear: left;
-    float: left;
-    width: 7em;
-    margin-bottom: 1.5em;
+  clear: left;
+  float: left;
+  width: 7em;
+  margin-bottom: 1.5em;
 }
 
 fieldset dl dd {
-    margin-bottom: 1.5em;
+  margin-bottom: 1.5em;
 }
 
-textarea{
-    width:90%;
+textarea {
+  width: 90%;
 }
 
 /* mypage.php プロフィール画像 */
-#thumnail{
-    width: 45%;   
-    height: auto;
+#thumnail {
+  width: 45%;
+  height: auto;
+  margin-bottom:1em;
 }
 
-input[type="file"], button{
-    padding:0 20px;
+input[type="file"],
+button {
+  padding: 0 20px;
 }
 
 /* 出品者新規登録ボタン */
-a#accBtn, a.accBtn2,input.button, button, input[type="submit"] {
-    display: inline-block;
-    border-radius: 4px; /* 角丸 */
-    font-size: 0.9rem; /* 文字サイズ */
-    text-align: center; /* 文字位置   */
-    cursor: pointer; /* カーソル  */
-    margin: 15px;
-    padding: 7px 40px; /* 余白   */
-    background: #ff7d28; /* 背景色  */
-    color: #ffffff;
-    line-height: 1em; /* 1行の高さ  */
-    transition: 0.3s; /* なめらか変化 */
-    border: 1px solid #ff7d28; /* 枠の指定 */
-  }
-  /* a#accBtn:hover {
+a#accBtn,
+a.accBtn2,
+input.button,
+button,
+input[type="submit"] {
+  display: inline-block;
+  border-radius: 4px; /* 角丸 */
+  font-size: 0.9rem; /* 文字サイズ */
+  text-align: center; /* 文字位置   */
+  cursor: pointer; /* カーソル  */
+  margin: 15px;
+  padding: 7px 40px; /* 余白   */
+  background: #ff7d28; /* 背景色  */
+  color: #ffffff;
+  line-height: 1em; /* 1行の高さ  */
+  transition: 0.3s; /* なめらか変化 */
+  border: 1px solid #ff7d28; /* 枠の指定 */
+}
+a#accBtn,a.accBtn2{
+    width:3em;
+}
+
+/* a#accBtn:hover {
     color: #ffffff; 
     background: #ff7d28; 
     border: 1px solid #ff7d28; 
     border-radius: 4px; 
   } */
 
-  /* home_login.php ログインフォーム  */
-  form#login_form input{
-   margin:0.6em 0;
-   padding:7px 15px;
-  }
+/* home_login.php ログインフォーム  */
+form#login_form input {
+  margin: 0.6em 0;
+  padding: 7px 15px;
+}
 
-  /* home_newacc.php アカウント作成チェック エラーメッセージ */
-  div.cau2{
-      border:1px solid #ff6262;
-      background-color:#ffe0e0;
-      padding:10px;
-  }
+/* home_newacc.php アカウント作成チェック エラーメッセージ */
+div.cau2 {
+  border: 1px solid #ff6262;
+  background-color: #ffe0e0;
+  padding: 10px;
+}
 
-  pre {
-    overflow: auto;
-    white-space: pre-wrap;
-    word-wrap: break-word;
+pre {
+  overflow: auto;
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }
 
 /* 自己紹介、商品登録、ニュース、コンテンツ登録情報段組み */
-div.intro{
-    box-sizing: border-box;
-    padding:5px;
-    width:100%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin-bottom:1.5em;
+div.intro {
+  box-sizing: border-box;
+  padding: 5px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 1.5em;
 }
 
-div.bgodd{
-    background-color:#f6f6f6;
+div.bgodd {
+  background-color: #f6f6f6;
 }
 
-div.intro .sm{
-    width: calc(19.9% - 10px);
-    /* margin: 15px 0 5px 0;
+div.intro .sm {
+  width: calc(19.9% - 10px);
+  /* margin: 15px 0 5px 0;
     padding: 15px 0; */
 }
 
@@ -253,78 +264,211 @@ div.intro .sm{
     padding: 15px 0;
 } */
 
-div.intro div img{
-    width: 50%;
-    height: 50%;
-    margin: 0 auto;
-    overflow: hidden;
-    /* cursor: pointer;
+div.intro div img {
+  width: 50%;
+  height: 50%;
+  margin: 0 auto;
+  overflow: hidden;
+  /* cursor: pointer;
     margin-top: 5px; */
 }
 
-div.intro .lg{
-    width: calc(60% - 10px);
-    /* margin: 15px 0 5px 0;
+div.intro .lg {
+  width: calc(60% - 10px);
+  /* margin: 15px 0 5px 0;
     padding: 15px 0; */
-  }
+}
 
 /* ******** mainの中にある要素の設定ここまで ******* */
 
 /* ***************** footer **************** */
-footer{
-    box-sizing: border-box;
-    padding:20px 0;
-    margin:0 20px;
-    /* text-align:center; */
-    background-color:#ffebde;
-   } 
-
-footer div{
-    box-sizing: border-box;
-    width:100%;
-    display: flex;
-    justify-content: space-evenly;
-    margin-bottom:1.5em;
+footer {
+  box-sizing: border-box;
+  padding: 20px 0;
+  margin: 0 20px;
+  /* text-align:center; */
+  background-color: #ffebde;
 }
 
-footer ul{
-    text-align:center;
+footer div {
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 1.5em;
 }
 
-footer ul li{
-    line-height: 2.2;
-    font-size:0.7rem;
+footer ul {
+  text-align: center;
+}
+
+footer ul li {
+  line-height: 2.2;
+  font-size: 0.7rem;
 }
 
 /* ************* 微調整用 ************* */
 .center {
-    text-align:center;
+  text-align: center;
 }
 
-.small001{
-    font-size:0.7rem;
+.small001 {
+  font-size: 0.7rem;
 }
 
-.small002{
-    font-size:0.5rem;
+.small002 {
+  font-size: 0.5rem;
 }
 
 /* footer SNSアイコンスペース確保 */
-.sns img{
- margin-right:1.5em;
+.sns img {
+  margin-right: 1.5em;
 }
 
 /* アンカー要素下線で強調したい時 */
-.underline{
- border-bottom:2px dotted #ff7d28;
+.underline {
+  border-bottom: 2px dotted #ff7d28;
 }
 
 /* pタグの上下にスペースがほしいとき */
-.space{
-    margin:1em 0;
+.space {
+  margin: 1em 0;
 }
 
 /* 会員ログイン時エラーメッセージ赤文字 */
-.red{
- color:red;
+.red {
+  color: red;
+}
+
+/* スマホ対応   */
+@media (max-width: 800px) {
+  /* 商品登録、コンテンツ etc  */
+  /* 出品者新規登録ボタン */
+  a#accBtn,a.accBtn2 {
+    font-size: 0.7rem;
+    width:3em;
+    margin: 0;
+    padding: 6px 25px; 
+    line-height: 1em; 
+   } 
+  /* **** 商品登録、コンテンツ等の段組み ****  */
+     div.sm p, div.lg p{
+      font-size:0.7rem;
+  }
+  div.sm pre, div.lg pre{
+    font-size:0.7rem;
+  }
+  div.intro .sm {
+    width: calc(24.9% - 10px);
+    /* margin: 15px 0 5px 0;
+      padding: 15px 0; */
+  }
+  div.intro div img {
+    width: 80%;
+    height: 80%;
+  }
+  div.intro .lg {
+    width: calc(50% - 10px);
+    /* margin: 15px 0 5px 0;
+      padding: 15px 0; */
+  }
+  span.url{
+      font-size:0.7rem;
+  }
+}
+
+@media (max-width: 680px) {
+  /* header */
+  header {
+    flex-direction: column;
+    align-items: center;
+  }
+  header img {
+    margin-bottom: 0;
+  }
+  header ul{
+    margin-top:0;
+  }
+  header p {
+    text-align: center;
+    margin: 0;
+    font-size: 1rem;
+  }
+  /* header ここまで */
+
+  /* マイページのナビゲーション  */
+ul#mypage_nav li {
+    margin-top:0.5em;
+  }
+  
+ul#mypage_nav span {
+    font-size:0.6rem;
+  }
+  /* mypage.php プロフィール画像 */
+#thumnail {
+    width: 65%;
+    height: auto;
+  }
+  /* form周り */
+  button{
+      display:block;
+      margin:0.5em auto 0 auto;
+  }
+}
+
+@media (max-width: 500px) {
+  h1 {
+    font-size: 1rem;
+  }
+  h3 {
+    font-size: 0.7rem;
+  }
+  p{
+      font-size:0.65rem;
+  }
+  a{
+      font-size:0.7rem;
+  }
+  /* ログイン時に表示される生産者のお名前  */
+header p {
+    text-align: center;
+    margin: 0;
+    font-size: 1rem;
+  }
+  header ul{
+    margin-top:0;
+  }
+  /* footer */
+  footer ul li a {
+    font-size: 0.6rem;
+  }
+  /* 商品登録、コンテンツ etc  */
+  /* 出品者新規登録ボタン */
+  a#accBtn,a.accBtn2 {
+    font-size: 0.65rem;
+    padding: 6px 15px; 
+   } 
+   div.intro div img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+/*  ********   400px 以下 ********** */
+@media (max-width: 400px) {
+   /* form 周り */
+ fieldset dl {
+    margin-bottom: 1em;
+  }
+  
+  fieldset dl dt {
+    clear: left;
+    float: left;
+    width: 5em;
+    margin-bottom:0.5rem;
+    font-size:0.7rem;
+  }
+  fieldset dl dd {
+    margin-bottom: 0.5em;
+  }
 }
