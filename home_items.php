@@ -52,7 +52,7 @@
      while($r2 = $stmt->fetch(PDO::FETCH_ASSOC)){  
       $str_text = '';
       $str_text = mb_substr($r2['p_text'],0,50);
-      $str_text .= $str_text."...";
+      $str_text = $str_text."...";
       $url= "p_code={$r2["p_code"]}%26c_code={$_SESSION["users_id"]}%26a_code={$r2["a_code"]}";
       $odd++;
       if($odd%2 === 0){
