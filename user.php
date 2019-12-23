@@ -25,7 +25,7 @@ $stmt_c = $pdo->prepare("SELECT * FROM mst_content WHERE p_code = $p_code");
 $status_c = $stmt_c->execute();
 foreach ($stmt_c as $r_c) {
 }
-$view_c .="<img src=\"img/{$r_p["c_file"]}\" />";
+$view_c .="<img src=\"img/{$r_c["c_file"]}\" />";
 
 // ニュースのDBより
 $stmt_n = $pdo->prepare("SELECT * FROM mst_intro WHERE c_code = $c_code");
@@ -121,26 +121,27 @@ function get_count($file) {
  -->
 
 <!-- 動画表示 -->
-<video id="video" controls>
+<video id="video" loop autoplay muted playsinline controls>
   <?php
   echo'<source src="upload/'.$r["a_id"].'"type="video/mp4;" codecs="avc1.42E01E, mp4a.40.2">'
   ?>
 </video>
 
-<div class="link1">
-<div class="seihin">
-  <p class="midashi1">製品名</p>
-  <!-- <section> -->
-  <p class="btn_vote" id="vote_01"></p>
-  </div><!-- /btn_area -->
-  <!-- </section> -->
-  <!-- <p class="iine"><a href="nice.php">いいね！</a></p> -->
+
+<section>
+<div class="btn_area">
+<h2><?php echo $r_p['p_text'];?></h2>
+<p class="ico_heart vote_01"><?= get_count('vote_01') ?></p>
+<p class="btn_vote" id="vote_01"></p>
+</div><!-- /btn_area -->
+
+<h2><?php echo $r_s['name'];?></h2>
+<h2><?php echo $r_s['name_in_charge'];?></h2>
+<a href="follow.php">商品をフォロー</a>
+</section>
+
 </div>
-<div class="seisan">
-  <p class="midashi2">生産者名</p>
-  <p class="follow"><a href="follow.php">商品をフォロー</a></p>
-</div>
-</div>
+<section>
 <div class="menu1">
   <div class=btn1><a href="#story" class="btn1_e">こだわり</a></div> <!-- ストーリーにあたる  -->
   <div class=btn1><a href="#contents" class="btn1_e">使い方</a></div> <!--  (3) How toコンテンツページ URLは生産者名、商品ID、コンテンツID  -->
@@ -151,6 +152,7 @@ function get_count($file) {
   <div class=btn1><a href="#list" class="btn1_e">他の製品</a></div> <!-- list.php   -->
   <div class=btn1><a href="user_newaccount.php?shop=aaaa" class="btn1_e">マイページ</a></div> <!-- loginへ   --> 
 </div>
+</section>
 
  <main>
  <!--  
@@ -162,7 +164,7 @@ function get_count($file) {
  --> 
  
  <section> 
-  <h1><?php echo $view_p;?></h1> <!-- 1. 商品の画像  -->
+  <h3><?php echo $view_p;?></h3> <!-- 1. 商品の画像  -->
   <pre><?php echo $r_p['p_spec'];?></pre> <!-- 1. 商品の名称・品名・品番など  -->
 
 </section>
@@ -176,7 +178,7 @@ function get_count($file) {
 <section id="contents">
   <h1>使い方</h1> <!-- (3) コンテンツ How to 例: 登録されたうち1件を表示   -->
   <pre><?php echo $r_c['title'];?></pre> 
-  <pre><?php echo $view_c;?></pre> <!-- 画像イメージ -->
+  <h3><?php echo $view_c;?></h3> <!-- 画像イメージ -->
   <pre><?php echo $r_c['comment'];?></pre> 
   <a href="user_contents.php?shop=aaa&items=xxx" class="more">more</a> <!-- コンテンツページへのリンク  -->
  </section>
@@ -184,14 +186,14 @@ function get_count($file) {
 <section id="news">
 <h1>ニュース</h1> <!-- ニュース -->
 <pre><?php echo $r_n['title'];?></pre> 
-<pre><?php echo $view_n;?></pre> <!-- 画像イメージ -->
+<h3><?php echo $view_n;?></h3> <!-- 画像イメージ -->
   <pre><?php echo $r_n['text'];?></pre> 
   <a href="user_news.php?shop=aaa&items=xxx" class="more">more</a> <!-- コンテンツページへのリンク  -->
   </section>
 
   <section id="profile">
   <h1>生産者</h1> <!-- (3) コンテンツ How to 例: 登録されたうち1件を表示   -->
-  <pre><?php echo $view_s;?></pre> 
+  <h3><?php echo $view_s;?></h3> 
   <pre><?php echo $r_s['name'];?></pre> 
   <pre><?php echo $r_s['name_in_charge'];?></pre> <!-- 画像イメージ -->
   <a href="user_profile.php?shop=aaa&items=xxx" class="more">more</a> <!-- コンテンツページへのリンク  -->
@@ -200,7 +202,7 @@ function get_count($file) {
   <section  id="list">
   <h1>製品一覧</h1> <!-- (3) コンテンツ How to 例: 登録されたうち1件を表示   -->
   <pre><?php echo $r_p['p_name'];?></pre> 
-  <pre><?php echo $view_p;?></pre> <!-- 画像イメージ -->
+  <h3><?php echo $view_p;?></h3>
   <a href="user_list.php?shop=aaa&items=xxx" class="more">more</a> <!-- コンテンツページへのリンク  -->
  </section>
 
