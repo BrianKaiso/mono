@@ -17,7 +17,7 @@
 <!-- headerここから-->
 <header>
  <div> <!-- ヘッダーメインロゴ   -->
-  <a href="home.php"><img src="./img/main_logo.png" width="108" height="104" alt="手のひらストーリ QRコードから始まるモノガタリ" /></a>
+  <a href="home.php"><img src="./img/main_logo_sm.png" width="230" height="105" alt="手のひらストーリ QRコードから始まるモノガタリ" /></a>
  </div> <!-- ヘッダーメインロゴ 終わり  -->
 
  <div> <!-- ヘッダーナビゲーションここから   -->

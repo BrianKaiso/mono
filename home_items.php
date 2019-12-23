@@ -85,7 +85,7 @@ include(__DIR__.'/include/home/mypagenav.php');
 
 <!-- マイページ基本情報表示と更新  -->
   <p><strong><?=$r["name"] ?></strong>さんの商品を登録・編集・削除することができます。</p> <!-- 社名/屋号  -->
-  <p>商品を登録すると即座に商品ページのURLとQRコードが発行されます。URLをシェアしたり、QRコードを商品パッケージに印刷したり、お店に掲示しよう！</p>
+  <p>商品を登録すると即座に商品ページのURLとQRコードが発行されます。URLをシェアしたり、QRコードを商品パッケージに印刷したり、お店に掲示しよう！</p><br />
   <?php
     if(isset($_SESSION["intro_edit_check"])){
       $error="";
@@ -99,9 +99,9 @@ include(__DIR__.'/include/home/mypagenav.php');
     }
 
    ?>
+   <h2>商品登録</h2>
   <!-- 登録フォームを表示する   -->
   <fieldset>
-    <legend>商品登録</legend>
     <form method="post" action="home/home_item_edit.php" enctype="multipart/form-data">
     <dl>
       <dt>商品名<dt>
