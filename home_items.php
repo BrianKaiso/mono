@@ -53,7 +53,7 @@
       $str_text = '';
       $str_text = mb_substr($r2['p_text'],0,50);
       $str_text .= $str_text."...";
-      $url= "p_code={$r2['p_code']}%26c_code={$_SESSION["users_id"]}%26a_code={$r2["a_code"]}";
+      $url= "p_code={$r2["p_code"]}%26c_code={$_SESSION["users_id"]}%26a_code={$r2["a_code"]}";
       $odd++;
       if($odd%2 === 0){
         $view .= "<div class=\"intro bgodd\"><div class=\"sm\"><img src='home/items/{$_SESSION["users_id"]}/{$r2['p_img']}' /></div><div class=\"lg\"><p class=\"space\"><strong>{$r2['p_name']}</strong></p><p>{$r2{'p_spec'}}</p><p>{$str_text}</p></div><div class=\"sm\"><br /><img src=\"https://api.qrserver.com/v1/create-qr-code/?data=http://redturtle44.sakura.ne.jp/mono/user.php?{$url}&size=100x100\" alt=\"{r2['p_name']}のページ\" /><br /><a href=\"http://redturtle44.sakura.ne.jp/mono/user.php?p_code={$r2['p_code']}&c_code={$_SESSION["users_id"]}&a_code={$r2["a_code"]}\"><span class=\"url\">URL<span></a><br /><a class=\"accBtn2\" href='home/home_items_delete.php?id={$r2['p_code']}&img={$r2['p_img']}'>削除</a></div></div>";
