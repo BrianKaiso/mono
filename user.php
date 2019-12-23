@@ -81,7 +81,7 @@ function get_count($file) {
 
 
 <nav class="icon">
-<a  href="index.php?shop=aaaa&itemsxxxx"><img src="../mono/img/image_preview.png" style=width:80px; alt="手のひらストーリー"></a> <!-- (1) サービストップページ URLに生産者名と商品ID   -->
+<a  href="index.php?shop=aaaa&itemsxxxx"><img class="logo" src="../mono/img/logo_white1.png" alt="手のひらストーリー"></a> <!-- (1) サービストップページ URLに生産者名と商品ID   -->
 </nav>
 
 <!-- include navitation.php ここから  -->
@@ -144,7 +144,7 @@ function get_count($file) {
 <div class="menu1">
   <div class=btn1><a href="#story" class="btn1_e">こだわり</a></div> <!-- ストーリーにあたる  -->
   <div class=btn1><a href="#contents" class="btn1_e">使い方</a></div> <!--  (3) How toコンテンツページ URLは生産者名、商品ID、コンテンツID  -->
-  <div class=btn1><a href="#news" class="btn1_e">お知らせ</a></div> <!-- (4) ニュース URLは生産者生と商品ID   -->
+  <div class=btn1><a href="#news" class="btn1_e">お知らせdaaaaaa</a></div> <!-- (4) ニュース URLは生産者生と商品ID   -->
 </div>
 <div class="menu2">
   <div class=btn1><a href="#profile" class="btn1_e">生産者紹介</a></div> <!-- (2) 生産者紹介・こだわり URLは生産者名   --> 

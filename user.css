@@ -3,21 +3,28 @@ body {
     "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, "ＭＳ ゴシック", sans-serif;
 }
 
+.logo{
+  width: 30%;
+  height: auto;
+}
+
 .icon {
+  top: 15px;
+  left: 10px;
   display: block;
-  position: fixed;
+  position: absolute;
   /* right: 13px;
   top: 12px;
   width: 42px;
   height: 51px; */
   cursor: pointer;
   z-index: 2;
-  text-align: center;
+  /* text-align: center; */
 }
 
 /* ハンバーガーメニュー */
 .globalMenu {
-  position: fixed;
+  position: absolute;
   z-index: 3;
   top: 0;
   left: 0;
@@ -64,14 +71,14 @@ body {
 /* 3本線 */
 .navToggle {
   display: block;
-  position: fixed;
+  position: absolute;
   right: 13px;
   top: 12px;
   width: 42px;
   height: 51px;
   cursor: pointer;
   z-index: 4;
-  background: #666;
+  /* background: #666; */
   text-align: center;
 }
 
