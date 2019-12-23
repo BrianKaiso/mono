@@ -108,7 +108,7 @@ if(isset($errMsg)){
         <p class="exp">パスワードに使える文字: 5～16文字以内で半角のアルファベット小文字、大文字、数字を1種類以上含めてください。</p>
 </fieldset>
 <div id="caub4">
-<a id="accBtn" onclick="newAccAct()">アカウントを作成する</a>
+<a id="accBtn3" onclick="newAccAct()">アカウントを作成する</a>
 </div>
 </form>
 </div> <!-- loginBox3 ends here -->
