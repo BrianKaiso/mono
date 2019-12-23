@@ -18,28 +18,28 @@ foreach ($stmt_p as $r_p) {
   // データベースのフィールド名で出力。
   // echo $row['p_name'];みたいな感じで書いたらHTML内に持ってこれるで。
 }
-$view_p .="<img src=\"img/{$r_p["p_img"]}\" />";
+$view_p .="<img src=\"home/items/{$_GET["c_code"]}/{$r_p["p_img"]}\" />";
 
 // コンテンツのDBより
 $stmt_c = $pdo->prepare("SELECT * FROM mst_content WHERE p_code = $p_code");
 $status_c = $stmt_c->execute();
 foreach ($stmt_c as $r_c) {
 }
-$view_c .="<img src=\"img/{$r_c["c_file"]}\" />";
+$view_c .="<img src=\"home/contents/{$_GET["c_code"]}/{$r_c["c_file"]}\" />";
 
 // ニュースのDBより
-$stmt_n = $pdo->prepare("SELECT * FROM mst_intro WHERE c_code = $c_code");
+$stmt_n = $pdo->prepare("SELECT * FROM dat_news WHERE p_code = $c_code");
 $status_n = $stmt_n->execute();
 foreach ($stmt_n as $r_n) {
 }
-$view_n .="<img src=\"img/{$r_n["media"]}\" />";
+$view_n .="<img src=\"home/news/{$_GET["c_code"]}/{$r_n["n_img"]}\" />";
 
 // 生産者のDBより
 $stmt_s = $pdo->prepare("SELECT * FROM mst_creater WHERE c_code = $c_code");
 $status_s = $stmt_s->execute();
 foreach ($stmt_s as $r_s) {
 }
-$view_s .="<img src=\"img/{$r_s["media"]}\" />";
+$view_s .="<img src=\"home/intro/{$_GET["c_code"]}/{$r_s["media"]}\" />";
 
 // top動画のDBより
 $stmt = $pdo->prepare("SELECT * FROM mst_asset WHERE a_code = $a_code");
@@ -127,10 +127,9 @@ function get_count($file) {
   ?>
 </video>
 
-
 <section>
 <div class="btn_area">
-<h2><?php echo $r_p['p_text'];?></h2>
+<h2><?php echo $r_p['p_name'];?></h2>
 <p class="ico_heart vote_01"><?= get_count('vote_01') ?></p>
 <p class="btn_vote" id="vote_01"></p>
 </div><!-- /btn_area -->
