@@ -26,6 +26,21 @@ body > * {
 
 /*vieoを含むheader領域 */
 
+header{
+    position: relative;
+    z-index: 1;
+}
+.link1{
+    position: absolute;
+    left: 7%;
+    bottom: 10%;
+}
+.link2{
+    position: absolute;
+    right: 7%;
+    bottom: 10%;
+}
+
 .header-wrap {
     grid-row: title;
     position: relative;
@@ -106,7 +121,7 @@ body > * {
 /* メーン領域 */
 #main{
     padding-left: 0.5em;
-    font-family: 'Noto Serif JP', serif
+    font-family: 'Noto Serif JP', serif;
     color: rgb(49, 44, 44);
 }
 

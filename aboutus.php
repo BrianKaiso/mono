@@ -35,8 +35,8 @@ session_start();
                 </div>
             </div>
             <p>
-                <a class="link" href="aboutus.php" >会員登録する</a>
-                <a class="link" href="aboutus.php" >生産者登録する</a>
+                <a class="link1" href="user_newaccount.php" >会員登録する</a>
+                <a class="link2" href="home.php" >生産者登録する</a>
             </p>
         </div>
     </header>
