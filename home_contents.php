@@ -90,16 +90,16 @@ include(__DIR__.'/include/home/mypagenav.php');
 ?>
 
 <!-- マイページ基本情報表示と更新  -->
-  <p><strong><?=$r["name"] ?></strong>さんの商品の魅力を紹介するコンテンツ（使い方、How toなど）をこちらで登録・編集することができます。</p><br /> <!-- 社名/屋号  -->
+  <p><strong><?=$r["name"] ?></strong>さんの商品の魅力を紹介するコンテンツ（使い方、How toなど）をこちらで登録・編集することができます。</p> <!-- 社名/屋号  -->
   <?php
     if(isset($_SESSION["intro_edit_check"])){
       $error="";
       foreach( $_SESSION["intro_edit_check"] as $val ) {
-        $error .= "<p>";
+        $error .= "<p class=\"red\">";
         $error .= "$val";
         $error .= "</p>";
     }
-        echo $error;
+        echo $error,"<br \>";
         $_SESSION["intro_edit_check"] = "";
     }
 

@@ -15,7 +15,8 @@ $fileroot = __DIR__."/items/".$_SESSION["users_id"]; // 保存先のフォルダ
 // 保存先のフォルダーが存在するかどうか確認する
 if(!file_exists($fileroot)){
     //フォルダーが存在しないので作成する
-    mkdir($fileroot, 0644);
+    // mkdir($fileroot, 0644);
+    mkdir($fileroot);
 }
 
 // エラーを返すための変数を宣言
@@ -78,20 +79,43 @@ if(empty($error)){
             $stmt->bindValue(':desc', $desc, PDO::PARAM_STR); 
             $stmt->bindValue(':media', $file_name, PDO::PARAM_STR); 
             $status = $stmt->execute(); // 成功ならtrue, 失敗ならfalse
-
-            if($status==false) {
+            
+            // 直前でINSERTしたp_codeを取得する
+            $sql = "SELECT LAST_INSERT_ID()";
+            $stmt = $pdo->prepare($sql);
+            $status2 = $stmt->execute(); // 成功ならtrue, 失敗ならfalse
+            $r = $stmt->fetch();
+            //var_dump($r["LAST_INSERT_ID()"]);
+            
+            if($status==false || $status2==false) {
                 $error[]="データーベースに接続ができませんでした。";
                 $_SESSION["intro_edit_check"]=$error;
                 redirect("../home_items.php");
                 exit;
             }else{
-               // $error=[];
-                $error[]="登録が完了しました！";
-                $_SESSION["intro_edit_check"]=$error;
-                redirect("../home_items.php");
-                exit;
-            }     
+                $sql ="INSERT INTO mst_asset (p_code,a_id,a_path,a_size,a_type,a_lw) VALUES (:p_code,:a_id,:a_path,:a_size,:a_type,:a_lw)";
+                $stmt = $pdo->prepare($sql);
+                $stmt->bindValue(':p_code', $r["LAST_INSERT_ID()"], PDO::PARAM_STR); 
+                $stmt->bindValue(':a_id', $file_name, PDO::PARAM_STR); 
+                $stmt->bindValue(':a_path', "test", PDO::PARAM_STR); 
+                $stmt->bindValue(':a_size', "100", PDO::PARAM_INT); 
+                $stmt->bindValue(':a_type', "test", PDO::PARAM_STR); 
+                $stmt->bindValue(':a_lw', "2", PDO::PARAM_INT); 
+                $status3 = $stmt->execute(); // 成功ならtrue, 失敗ならfalse
 
+                if($status3==false){
+                  $error[]="データーベースに接続ができませんでした。";
+                  $_SESSION["intro_edit_check"]=$error;
+                  redirect("../home_items.php");
+                  exit;
+                }else{
+                    // $error=[];
+                    $error[]="登録が完了しました！";
+                    $_SESSION["intro_edit_check"]=$error;
+                    redirect("../home_items.php");
+                    exit;
+                }  
+            }     
         } else {
             $error[]= "Error:アップロードできませんでした。";
             redirect("../home_items.php");

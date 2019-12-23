@@ -85,16 +85,16 @@ include(__DIR__.'/include/home/mypagenav.php');
 
 <!-- マイページ基本情報表示と更新  -->
   <p><strong><?=$r["name"] ?></strong>さんの商品を登録・編集・削除することができます。</p> <!-- 社名/屋号  -->
-  <p>商品を登録すると即座に商品ページのURLとQRコードが発行されます。URLをシェアしたり、QRコードを商品パッケージに印刷したり、お店に掲示しよう！</p><br />
+  <p>商品を登録すると即座に商品ページのURLとQRコードが発行されます。URLをシェアしたり、QRコードを商品パッケージに印刷したり、お店に掲示しよう！</p>
   <?php
     if(isset($_SESSION["intro_edit_check"])){
       $error="";
       foreach( $_SESSION["intro_edit_check"] as $val ) {
-        $error .= "<p>";
+        $error .= "<p class=\"red\">";
         $error .= "$val";
         $error .= "</p>";
     }
-        echo $error;
+        echo $error,"<br />";
         $_SESSION["intro_edit_check"] = "";
     }
 

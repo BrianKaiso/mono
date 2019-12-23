@@ -15,7 +15,8 @@ $fileroot = __DIR__."/intro/".$_SESSION["users_id"]; // 保存先のフォルダ
 // 保存先のフォルダーが存在するかどうか確認する
 if(!file_exists($fileroot)){
     //フォルダーが存在しないので作成する
-    mkdir($fileroot, 0644);
+    // mkdir($fileroot, 0644);
+    mkdir($fileroot);
 }
 
 // エラーを返すための変数を宣言
@@ -61,7 +62,7 @@ if(empty($error)){
      if (is_uploaded_file($tmp_path)) {
            if (move_uploaded_file($tmp_path, $file_dir_path)) {
             // chmod( $file_dir_path, 0644 );
- 
+
             // すべて揃ったのでDBに登録する
             // ファイル名をDBにアップロードする。
             $pdo = db_conn(); // include -> functions.php -> function db_conn();

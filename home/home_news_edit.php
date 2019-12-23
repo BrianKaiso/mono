@@ -15,7 +15,8 @@ $fileroot = __DIR__."/news/".$_SESSION["users_id"]; // 保存先のフォルダ�
 // 保存先のフォルダーが存在するかどうか確認する
 if(!file_exists($fileroot)){
     //フォルダーが存在しないので作成する
-    mkdir($fileroot, 0644);
+    // mkdir($fileroot, 0644);
+    mkdir($fileroot);
 }
 
 // エラーを返すための変数を宣言
