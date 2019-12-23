@@ -30,7 +30,7 @@ if($status==false) {
   sql_error();
 }else{
   while( $r = $stmt->fetch(PDO::FETCH_ASSOC)){
-    $view .= '<div class="item">';
+    $view .= '<div class="swiper-slide">';
     $view .= '<img class="new" src="upload/'.$r["c_file"].'">';
     $view .= '<p>'.$r["name"].'</p>';
     $view .= '</div>';
@@ -41,7 +41,7 @@ if($status==false) {
   sql_error();
 }else{
   while( $r_n = $stmt_n->fetch(PDO::FETCH_ASSOC)){
-    $view_n .= '<div class="item">';
+    $view_n .= '<div class="swiper-slide">';
     $view_n .= '<img class="new" src="upload/'.$r_n["n_img"].'">';
     $view_n .= '<p>'.$r_n["name"].'</p><br>';
     $view_n .= '<p>'.$r_n["title"].'</p><br>';
@@ -68,11 +68,8 @@ if($status==false) {
     <link rel="stylesheet" type="text/css" href="css/slick-theme.css"/>
     <link rel="stylesheet" type="text/css" href="css/slick.css"/>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-
-    <!-- owlcorousel -->
-    <link rel="stylesheet" href="mono/css/owl.carousel.css">
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-    <script src="mono/js/owl.carousel.js"></script> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.7/css/swiper.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.7/js/swiper.min.js"></script>
     <title>サービス名</title>
     </head>
     <body>
@@ -104,18 +101,23 @@ if($status==false) {
 <!-- トップ画像 -->
 <!-- <div class="video_wrapper"> -->
 <div class="video_wrapper">
-  <img id="catchcopy" src="img/index/catchcopy.png">
+  <img class="monogatari" src="img/logo.png">
+  <img id="catchcopy" src="img/title.png">
   <video id="video" loop autoplay muted>
-    <source src="img/DJI_00622.mp4#t=11,60" type="video/mp4;" codecs="avc1.42E01E, mp4a.40.2">
+    <source src="img/index_movie.mp4" type="video/mp4;" codecs="avc1.42E01E, mp4a.40.2">
   </video>
 </div>
 
 <div id = "intro">
-  <div class="intro_child">
+  <div class="intro_child1">
+    <!-- <img class="logo" src="img/logo_backwhite.png"> -->
     <!-- <h1>てのひらストーリー</h1> -->
     <p>QRを読み込んだら産地へひとっとび。モノにまつわるストーリーをお届けします。</p>
   </div>
-  <div class="intro_child">
+  <div class="intro_child2">
+    <p>出品者の方は</br>こちら</p>
+    <!-- <div class="half">
+    </div> -->
     <img id="hazemoto" src="img/index/nokasa.jpg">
   </div>
 </div>
@@ -123,7 +125,7 @@ if($status==false) {
 
 
 <div id="user">
-  <div class="container">
+  <div class="container_user">
   <a href="home.php" class="btn-icon">買いたい方はこちら</a>
   </div>
   <!-- <a class="btn-flat-border" href="home.php">生産者登録</a> -->
@@ -141,27 +143,37 @@ if($status==false) {
 
 <!-- 新着 -->
 <h1 class="title">--------  新着  --------</h1>
-  <div class="container jumbotron" id="view"><?=$view?></div>
+<div class="swiper-container">
+  <div class="swiper-wrapper" id="view"><?=$view?></div>
+</div>
 
 
-<h1 class="title">ニュース</h1>
-<div class="container jumbotron" id="view"><?=$view_n?></div>
+<h1 class="title">--------  ニュース  --------</h1>
+<div class="swiper-container">
+<div class="swiper-wrapper" id="view"><?=$view_n?></div>
+</div>
+<!-- <a class="btn-flat-border" href="home.php">生産者登録</a> -->
 
-<a class="btn-flat-border" href="home.php">生産者登録</a>
-
-<ul class="snsbtniti"><div id="sns-area"><ul class="snsbtniti"></div></ul>
+<div class="sns_button">
+  <ul class="snsbtniti">
+    <div id="sns-area"></div>
+  </ul>
+</div>
 
 <footer>
-<a href="">利用規約</a>
-<a href="">個人情報保護方針</a>
-<a href="">ご利用にあたって</a>
+<a href="">利用規約 </a>
+<p> | </p>
+<a href="">個人情報保護方針 </a>
+<p> | </p>
+<a href="">ご利用にあたって </a>
+<p> | </p>
 <a href="">運営会社</a>
 
 </footer>
 
-<div class="test">
+<!-- <div class="test">
   <img class="test_img" src="upload/images.jpeg" alt="">
-</div>
+</div> -->
 
 <script>
 
@@ -221,7 +233,56 @@ function generate_share_button(area, url, text) {
 function popupWindow(url) {
     window.open(url, '', 'width=580,height=400,menubar=no,toolbar=no,scrollbars=yes');
 }
-</script>
 
+//スライダー
+var mySwiper = new Swiper ('.swiper-container', {
+    // オプションパラメータ(一部のみ抜粋)
+    loop: true, // 最後のスライドまで到達した場合、最初に戻らずに続けてスライド可能にするか。
+    speed: 600, // スライドが切り替わるトランジション時間(ミリ秒)。
+    slidesPerView: 4, // 何枚のスライドを表示するか
+    spaceBetween: 10, // スライド間の余白サイズ(ピクセル)
+    direction: 'horizontal', // スライド方向。 'horizontal'(水平) か 'vertical'(垂直)。effectオプションが 'slide' 以外は無効。
+    effect: 'slide', // "slide", "fade"(フェード), "cube"(キューブ回転), "coverflow"(カバーフロー) または "flip"(平面回転)
+ 
+    // スライダーの自動再生
+    // autoplay: true 　のみなら既定値での自動再生
+    autoplay: {
+      delay: 3000, // スライドが切り替わるまでの表示時間(ミリ秒)
+      stopOnLast: false, // 最後のスライドまで表示されたら自動再生を中止するか
+      disableOnInteraction: true // ユーザーのスワイプ操作を検出したら自動再生を中止するか
+    },
+ 
+    // レスポンシブ化条件
+    breakpoints: {
+      // 980ピクセル幅以下になったら
+      980: {
+        slidesPerView: 3,
+        spaceBetween: 30
+      },
+      // 640ピクセル幅以下になったら
+      640: {
+        slidesPerView: 2,
+        spaceBetween: 20
+      }
+    },
+ 
+    // ページネーションを表示する場合
+    pagination: {
+      el: '.swiper-pagination',　 // ページネーションを表示するセレクタ
+    },
+ 
+    // 前後スライドへのナビゲーションを表示する場合
+    navigation: {
+      nextEl: '.swiper-button-next', // 次のスライドボタンのセレクタ
+      prevEl: '.swiper-button-prev', // 前のスライドボタンのセレクタ
+    },
+ 
+    // スクロールバーを表示する場合
+    scrollbar: {
+      el: '.swiper-scrollbar', // スクロールバーを表示するセレクタ
+    }
+  });
+
+</script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 </body>
