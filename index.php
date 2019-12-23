@@ -103,7 +103,7 @@ if($status==false) {
 <div class="video_wrapper">
   <img class="monogatari" src="img/logo.png">
   <img id="catchcopy" src="img/title.png">
-  <video id="video" loop autoplay muted>
+  <video id="video" loop autoplay muted playsinline>
     <source src="img/index_movie.mp4" type="video/mp4;" codecs="avc1.42E01E, mp4a.40.2">
   </video>
 </div>
@@ -118,7 +118,7 @@ if($status==false) {
     <p>出品者の方は</br>こちら</p>
     <!-- <div class="half">
     </div> -->
-    <img id="hazemoto" src="img/index/nokasa.jpg">
+    <a href="home.php"><img id="hazemoto" src="img/index/nokasa.jpg"></a>
   </div>
 </div>
 
@@ -126,7 +126,7 @@ if($status==false) {
 
 <div id="user">
   <div class="container_user">
-  <a href="home.php" class="btn-icon">買いたい方はこちら</a>
+  <a href="user_login.php" class="btn-icon">買いたい方はこちら</a>
   </div>
   <!-- <a class="btn-flat-border" href="home.php">生産者登録</a> -->
 </div>
