@@ -87,7 +87,7 @@ h1 {
   text-align: center;
   padding: 5px 0;
   border-radius: 7px;
-  color: #df7e3f;
+  color: #603813;
 }
 
 h2 {
@@ -95,12 +95,12 @@ h2 {
   text-align: center;
   padding: 5px 0;
   border-radius: 7px;
-  color: #df7e3f;
+  color: #603813;
 }
 
 h1,
 h2 {
-  background-color: #fffaf7;
+  background-color: #fcf8f4;
 }
 
 h3 {
@@ -153,7 +153,7 @@ fieldset {
   padding: 15px 20px;
   margin: 0 auto;
   margin: 1em 0;
-  border: 2px dotted #ffc39e;
+  border: 2px dotted #794c1f;
 }
 
 fieldset dl {
@@ -202,11 +202,11 @@ input[type="submit"] {
   cursor: pointer; /* カーソル  */
   margin: 15px;
   padding: 7px 40px; /* 余白   */
-  background: #ff7d28; /* 背景色  */
+  background: #603813; /* 背景色  */
   color: #ffffff;
   line-height: 1em; /* 1行の高さ  */
   transition: 0.3s; /* なめらか変化 */
-  border: 1px solid #ff7d28; /* 枠の指定 */
+  border: 1px solid #603813; /* 枠の指定 */
 }
 a#accBtn,a.accBtn2{
     width:3em;
@@ -250,7 +250,7 @@ div.intro {
 }
 
 div.bgodd {
-  background-color: #f6f6f6;
+  background-color: #fcf8f4;
 }
 
 div.intro .sm {
@@ -288,7 +288,7 @@ footer {
   padding: 20px 0;
   margin: 0 20px;
   /* text-align:center; */
-  background-color: #ffebde;
+  background-color: #f6ede5;
 }
 
 footer div {

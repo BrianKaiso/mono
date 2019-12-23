@@ -90,7 +90,7 @@ include(__DIR__.'/include/home/mypagenav.php');
 ?>
 
 <!-- マイページ基本情報表示と更新  -->
-  <p><strong><?=$r["name"] ?></strong>さんの商品の魅力を紹介するコンテンツ（使い方、How toなど）をこちらで登録・編集することができます。</p> <!-- 社名/屋号  -->
+  <p><strong><?=$r["name"] ?></strong>さんの商品の魅力を紹介するコンテンツ（使い方、How toなど）をこちらで登録・編集することができます。</p><br /> <!-- 社名/屋号  -->
   <?php
     if(isset($_SESSION["intro_edit_check"])){
       $error="";
@@ -104,9 +104,9 @@ include(__DIR__.'/include/home/mypagenav.php');
     }
 
    ?>
+   <h2>コンテンツ登録</h2>
   <!-- 登録フォームを表示する   -->
   <fieldset>
-    <legend>コンテンツ登録</legend>
     <form method="post" action="home/home_contents_edit.php" enctype="multipart/form-data">
     <dl>
       <dt>表示先商品</dt><dd><?=$view2?></dd>
