@@ -191,6 +191,7 @@ button {
 /* 出品者新規登録ボタン */
 a#accBtn,
 a.accBtn2,
+a#accBtn3,
 input.button,
 button,
 input[type="submit"] {
