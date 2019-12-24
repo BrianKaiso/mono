@@ -3,7 +3,7 @@ body {
     "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, "ＭＳ ゴシック", sans-serif;
 }
 
-.logo{
+.logo {
   width: 30%;
   height: auto;
 }
@@ -130,6 +130,8 @@ body {
 /* ビデオタグ */
 #video {
   z-index: 1;
+  width: 100vw;
+  height: auto;
 }
 
 /* 見出し部分_製品名と生産者名 */
@@ -186,14 +188,14 @@ body {
 
 .btn1_e {
   display: inline-block;
-  max-width: 180px;
-  text-align: left;
+  width: 100px;
+  text-align: center;
   border: 2px solid #666;
   font-size: 16px;
   color: #333;
   text-decoration: none;
   font-weight: bold;
-  padding: 8px 16px;
+  padding: 4px 4px;
   border-radius: 4px;
   transition: 0.4s;
 }
@@ -216,4 +218,96 @@ pre {
 
 .more {
   margin: 10px;
+}
+
+/* ここから下がボタンのCSS　*/
+.btn-icon {
+  display: inline-block;
+  max-width: 180px;
+  text-align: left;
+  background-color: #9ec34b;
+  font-size: 16px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 8px 16px 8px 32px;
+  border-radius: 4px;
+  position: relative;
+  margin: 0 auto;
+  text-shadow: 1px 2px 3px #808080;
+}
+
+.btn-icon:before {
+  margin: 0 auto;
+  font-family: "FontAwesome";
+  /* content: "\f105";好きなフォントアイコンを　 */
+  /* position: absolute; */
+  left: 16px;
+  top: 50%;
+  margin-top: -8px;
+}
+
+.btn-icon:hover {
+  opacity: 0.8;
+}
+
+/*SNSボタン*/
+/* ボタン全体 */
+.flowbtn7 {
+  border-radius: 50%;
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  font-size: 30px;
+  color: #fff !important;
+  text-decoration: none;
+  transition: 0.5s;
+}
+/* アイコンをど真ん中に*/
+.flowbtn7 i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+/* ulタグの内側余白を０にする */
+ul.snsbtniti {
+  padding: 0 !important;
+}
+/* ボタン全体の位置 */
+.snsbtniti {
+  margin: 0 auto;
+  width: 80%;
+  display: flex;
+  /* flex-flow:row wrap; */
+  justify-content: space-around;
+}
+/* ボタン同士の余白 */
+.snsbtniti li {
+  flex: 0 0 33%;
+  text-align: center !important;
+}
+/* ボタンにマウスを乗せた時 */
+.flowbtn7:hover {
+  -webkit-transform: translateY(-5px);
+  -ms-transform: translateY(-5px);
+  transform: translateY(-5px);
+}
+/* Twitter */
+.fl_tw7 {
+  background: #666;
+}
+/* LINE */
+.fl_li7 {
+  background: #666;
+}
+/* Facebook */
+.fl_fb7 {
+  background: #666;
+}
+#sns-area {
+  display: flex;
 }
