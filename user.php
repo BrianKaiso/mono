@@ -177,7 +177,7 @@ function get_count($file) {
 </section>
 
 <section id="contents">
-  <h1>使い方</h1> <!-- (3) コンテンツ How to 例: 登録されたうち1件を表示   -->
+  <h1>おすすめ</h1> <!-- (3) コンテンツ How to 例: 登録されたうち1件を表示   -->
   <pre><?php echo $r_c['title'];?></pre> 
   <h3><?php echo $view_c;?></h3> <!-- 画像イメージ -->
   <pre><?php echo $r_c['comment'];?></pre> 
