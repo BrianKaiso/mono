@@ -227,6 +227,8 @@ function get_count($file) {
 <p> | </p>
 <a href="">運営会社</a>
 
+
+
  </footer>
  <!-- include footer.php ここまで  -->
 
