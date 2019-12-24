@@ -28,14 +28,14 @@ foreach ($stmt_c as $r_c) {
 $view_c .="<img src=\"home/contents/{$_GET["c_code"]}/{$r_c["c_file"]}\" />";
 
 // ニュースのDBより
-$stmt_n = $pdo->prepare("SELECT * FROM dat_news WHERE p_code = $c_code");
+$stmt_n = $pdo->prepare("SELECT * FROM dat_news WHERE p_code = $p_code");
 $status_n = $stmt_n->execute();
 foreach ($stmt_n as $r_n) {
 }
 $view_n .="<img src=\"home/news/{$_GET["c_code"]}/{$r_n["n_img"]}\" />";
 
 // 生産者のDBより
-$stmt_s = $pdo->prepare("SELECT * FROM mst_creater WHERE c_code = $c_code");
+$stmt_s = $pdo->prepare("SELECT * FROM mst_intro WHERE c_code = $c_code");
 $status_s = $stmt_s->execute();
 foreach ($stmt_s as $r_s) {
 }
@@ -73,6 +73,8 @@ function get_count($file) {
     <link rel="stylesheet" href="user.css" />
     <link rel="stylesheet" href="video.css" />
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
     <title>手のひらストーリー</title>
 </head>
 <body>
@@ -144,7 +146,7 @@ function get_count($file) {
 <div class="menu1">
   <div class=btn1><a href="#story" class="btn1_e">こだわり</a></div> <!-- ストーリーにあたる  -->
   <div class=btn1><a href="#contents" class="btn1_e">使い方</a></div> <!--  (3) How toコンテンツページ URLは生産者名、商品ID、コンテンツID  -->
-  <div class=btn1><a href="#news" class="btn1_e">お知らせdaaaaaa</a></div> <!-- (4) ニュース URLは生産者生と商品ID   -->
+  <div class=btn1><a href="#news" class="btn1_e">お知らせ</a></div> <!-- (4) ニュース URLは生産者生と商品ID   -->
 </div>
 <div class="menu2">
   <div class=btn1><a href="#profile" class="btn1_e">生産者紹介</a></div> <!-- (2) 生産者紹介・こだわり URLは生産者名   --> 
@@ -175,7 +177,7 @@ function get_count($file) {
 </section>
 
 <section id="contents">
-  <h1>使い方</h1> <!-- (3) コンテンツ How to 例: 登録されたうち1件を表示   -->
+  <h1>おすすめ</h1> <!-- (3) コンテンツ How to 例: 登録されたうち1件を表示   -->
   <pre><?php echo $r_c['title'];?></pre> 
   <h3><?php echo $view_c;?></h3> <!-- 画像イメージ -->
   <pre><?php echo $r_c['comment'];?></pre> 
@@ -209,9 +211,24 @@ function get_count($file) {
 
  <!-- include footer.php ここから   -->
  <footer>
- <!-- 
-  footer 各ページへのリンク、SNSアイコン等表示
- -->
+
+ <div class="sns_button">
+  <ul class="snsbtniti">
+    <div id="sns-area"></div>
+  </ul>
+</div>
+
+<footer>
+<a href="">利用規約 </a>
+<p> | </p>
+<a href="">個人情報保護方針 </a>
+<p> | </p>
+<a href="">ご利用にあたって </a>
+<p> | </p>
+<a href="">運営会社</a>
+
+
+
  </footer>
  <!-- include footer.php ここまで  -->
 
@@ -286,6 +303,45 @@ function Vote(id, plus) {
 			allowAjax = true;
 		}, 1000);
 	});
+}
+
+// SNSボタンを追加するエリア
+var snsArea = document.getElementById('sns-area');
+ 
+// シェア時に使用する値
+var shareUrl = 'location.href'; // URL.現在のページURLを使用する場合 location.href;
+var shareText = '『手のひらストーリー』モノとヒトを繋げます。'; // 現在のページタイトルを使用する場合 document.title;
+ 
+generate_share_button(snsArea, shareUrl, shareText);
+ 
+// シェアボタンを生成する関数
+function generate_share_button(area, url, text) {
+    // シェアボタンの作成
+    var twBtn = document.createElement('div');
+    twBtn.className = 'twitter-btn';
+    var fbBtn = document.createElement('div');
+    fbBtn.className = 'facebook-btn';
+    var liBtn = document.createElement('div');
+    liBtn.className = 'line-btn';
+ 
+    // 各シェアボタンのリンク先
+    var twHref = 'https://twitter.com/share?text='+encodeURIComponent(text)+'&url='+encodeURIComponent(url);
+    var fbHref = 'http://www.facebook.com/share.php?u='+encodeURIComponent(url);
+    var liHref = 'https://line.me/R/msg/text/?'+encodeURIComponent(text)+' '+encodeURIComponent(url);
+ 
+    // シェアボタンにリンクを追加
+    var clickEv = 'onclick="popupWindow(this.href); return false;"';
+    var twLink = '<li><a class="flowbtn7 fl_tw7" href="' + twHref + '" ' + clickEv + '><i class="fab fa-twitter"></i></a></li>';
+    var fbLink = '<li><a class="flowbtn7 fl_fb7" href="' + fbHref + '" ' + clickEv + '><i class="fab fa-facebook-f"></a></li>';
+    var liLink = '<a class="flowbtn7 fl_li7" href="' + liHref + '" target="_blank"><i class="fab fa-line"></a></li>';
+    twBtn.innerHTML = twLink;
+    fbBtn.innerHTML = fbLink;
+    liBtn.innerHTML = liLink;
+ 
+    // シェアボタンを表示
+    area.appendChild(twBtn);
+    area.appendChild(fbBtn);
+    area.appendChild(liBtn);
 }
 
 </script>

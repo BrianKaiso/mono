@@ -52,13 +52,13 @@
      while($r2 = $stmt->fetch(PDO::FETCH_ASSOC)){  
       $str_text = '';
       $str_text = mb_substr($r2['p_text'],0,50);
-      $str_text .= $str_text."...";
+      $str_text = $str_text."...";
       $url= "p_code={$r2["p_code"]}%26c_code={$_SESSION["users_id"]}%26a_code={$r2["a_code"]}";
       $odd++;
       if($odd%2 === 0){
-        $view .= "<div class=\"intro bgodd\"><div class=\"sm\"><img src='home/items/{$_SESSION["users_id"]}/{$r2['p_img']}' /><br />a={$r2["a_code"]}<br />p={$r2["p_code"]}</div><div class=\"lg\"><p class=\"space\"><strong>{$r2['p_name']}</strong></p><p>{$r2{'p_spec'}}</p><p>{$str_text}</p></div><div class=\"sm\"><br /><img src=\"https://api.qrserver.com/v1/create-qr-code/?data=http://redturtle44.sakura.ne.jp/mono/user.php?{$url}&size=100x100\" alt=\"{r2['p_name']}のページ\" /><br /><a href=\"http://redturtle44.sakura.ne.jp/mono/user.php?p_code={$r2['p_code']}&c_code={$_SESSION["users_id"]}&a_code={$r2["a_code"]}\"><span class=\"url\">URL<span></a><br /><a class=\"accBtn2\" href='home/home_items_delete.php?id={$r2['p_code']}&img={$r2['p_img']}'>削除</a></div></div>";
+        $view .= "<div class=\"intro bgodd\"><div class=\"sm\"><img src='home/items/{$_SESSION["users_id"]}/{$r2['p_img']}' /></div><div class=\"lg\"><p class=\"space\"><strong>{$r2['p_name']}</strong></p><p>{$r2{'p_spec'}}</p><p>{$str_text}</p></div><div class=\"sm\"><br /><img src=\"https://api.qrserver.com/v1/create-qr-code/?data=http://redturtle44.sakura.ne.jp/mono/user.php?{$url}&size=100x100\" alt=\"{r2['p_name']}のページ\" /><br /><a href=\"http://redturtle44.sakura.ne.jp/mono/user.php?p_code={$r2['p_code']}&c_code={$_SESSION["users_id"]}&a_code={$r2["a_code"]}\"><span class=\"url\">URL<span></a><br /><a class=\"accBtn2\" href='home/home_items_delete.php?id={$r2['p_code']}&img={$r2['p_img']}'>削除</a></div></div>";
       }else{
-       $view .= "<div class=\"intro\"><div class=\"sm\"><img src='home/items/{$_SESSION["users_id"]}/{$r2['p_img']}' /><br />a={$r2["a_code"]}<br />p={$r2["p_code"]}</div><div class=\"lg\"><p class=\"space\"><strong>{$r2['p_name']}</strong></p><p>{$r2{'p_spec'}}</p><p>{$str_text}</p></div><div class=\"sm\"><br /><img src=\"https://api.qrserver.com/v1/create-qr-code/?data=http://redturtle44.sakura.ne.jp/mono/user.php?{$url}&size=100x100\" alt=\"{r2['p_name']}のページ\" /><br /><a href=\"http://redturtle44.sakura.ne.jp/mono/user.php?p_code={$r2['p_code']}&c_code={$_SESSION["users_id"]}&a_code={$r2["a_code"]}\"><span class=\"url\">URL<span></a><br /><a class=\"accBtn2\" href='home/home_items_delete.php?id={$r2['p_code']}&img={$r2['p_img']}'>削除</a></div></div>";
+       $view .= "<div class=\"intro\"><div class=\"sm\"><img src='home/items/{$_SESSION["users_id"]}/{$r2['p_img']}' /></div><div class=\"lg\"><p class=\"space\"><strong>{$r2['p_name']}</strong></p><p>{$r2{'p_spec'}}</p><p>{$str_text}</p></div><div class=\"sm\"><br /><img src=\"https://api.qrserver.com/v1/create-qr-code/?data=http://redturtle44.sakura.ne.jp/mono/user.php?{$url}&size=100x100\" alt=\"{r2['p_name']}のページ\" /><br /><a href=\"http://redturtle44.sakura.ne.jp/mono/user.php?p_code={$r2['p_code']}&c_code={$_SESSION["users_id"]}&a_code={$r2["a_code"]}\"><span class=\"url\">URL<span></a><br /><a class=\"accBtn2\" href='home/home_items_delete.php?id={$r2['p_code']}&img={$r2['p_img']}'>削除</a></div></div>";
      }
     }
     }
@@ -85,16 +85,16 @@ include(__DIR__.'/include/home/mypagenav.php');
 
 <!-- マイページ基本情報表示と更新  -->
   <p><strong><?=$r["name"] ?></strong>さんの商品を登録・編集・削除することができます。</p> <!-- 社名/屋号  -->
-  <p>商品を登録すると即座に商品ページのURLとQRコードが発行されます。URLをシェアしたり、QRコードを商品パッケージに印刷したり、お店に掲示しよう！</p><br />
+  <p>商品を登録すると即座に商品ページのURLとQRコードが発行されます。URLをシェアしたり、QRコードを商品パッケージに印刷したり、お店に掲示しよう！</p>
   <?php
     if(isset($_SESSION["intro_edit_check"])){
       $error="";
       foreach( $_SESSION["intro_edit_check"] as $val ) {
-        $error .= "<p>";
+        $error .= "<p class=\"red\">";
         $error .= "$val";
         $error .= "</p>";
     }
-        echo $error;
+        echo $error,"<br />";
         $_SESSION["intro_edit_check"] = "";
     }
 

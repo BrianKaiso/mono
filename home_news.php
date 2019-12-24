@@ -99,7 +99,7 @@ include(__DIR__.'/include/home/mypagenav.php');
 
 <!-- マイページ基本情報表示と更新  -->
   <p><strong><?=$r["name"] ?></strong>さんの商品の最新ニュースを届けよう！</p>
-  <p>登録一覧から”全商品ページに表示”を選択すると、すべての商品ページで表示されるニュースを登録することもできます。</p><br /><!-- 社名/屋号  -->
+  <p>登録一覧から”全商品ページに表示”を選択すると、すべての商品ページで表示されるニュースを登録することもできます。</p><!-- 社名/屋号  -->
   <?php
     if(isset($_SESSION["intro_edit_check"])){
       $error="";
@@ -108,7 +108,7 @@ include(__DIR__.'/include/home/mypagenav.php');
         $error .= "$val";
         $error .= "</p>";
     }
-        echo $error;
+        echo $error,"<br />";
         $_SESSION["intro_edit_check"] = "";
     }
 
