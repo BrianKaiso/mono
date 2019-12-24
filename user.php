@@ -28,7 +28,7 @@ foreach ($stmt_c as $r_c) {
 $view_c .="<img src=\"home/contents/{$_GET["c_code"]}/{$r_c["c_file"]}\" />";
 
 // ニュースのDBより
-$stmt_n = $pdo->prepare("SELECT * FROM dat_news WHERE p_code = $c_code");
+$stmt_n = $pdo->prepare("SELECT * FROM dat_news WHERE p_code = $p_code");
 $status_n = $stmt_n->execute();
 foreach ($stmt_n as $r_n) {
 }
