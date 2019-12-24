@@ -5,6 +5,7 @@
 
 
 body {
+    color: #666;
     margin: 0;
     padding:0;
 	display: grid;
@@ -17,7 +18,7 @@ body {
 	grid-row-gap: 20px;
 	row-gap: 20px;
     font-family: 'Noto Serif JP', serif;
-    background-color: #ece2d2;
+    background-color: #ffffff;
 }
 
 body > * {
@@ -101,7 +102,7 @@ header{
 	color: #ffffff;
 	text-decoration: none;
 	border: solid 1px #ffffff;
-	padding: 10px 40px;
+	padding: 2% 4%;
 	display: inline-block;
 	margin-top: 10px;
 	border-radius: 10px;
@@ -122,7 +123,7 @@ header{
 #main{
     padding-left: 0.5em;
     font-family: 'Noto Serif JP', serif;
-    color: rgb(49, 44, 44);
+    /* color: rgb(49, 44, 44); */
 }
 
 section{
@@ -177,23 +178,106 @@ section#projects h3 p:after {
     z-index: 999;
 }
 
+footer{
+    font-size: 13px;
+    display: flex;
+    justify-content: space-around;
+    background: #666;
+    width: 100%;
+    height: auto;
+    /* padding-top: 15%; */
+    flex-flow: wrap;
+    align-items: center;
+  }
+  
+  footer a{
+    text-decoration: none;
+    color: #ffffff;
+  }
+  
+  footer p{
+    text-decoration: none;
+    color: #ffffff;
+  }
+  
+
 
 /* フッター（仮設置） */
-footer {
+/* footer {
 	grid-row: foot;
 	justify-self: center;
 	align-self: center;
 	font-size: 13px;
 	font-family: 'Raleway', sans-serif;
-}
+} */
 
 /* フッターのバー */
-body::after {
+/* body::after {
 	content: "";
 	background-color: #eeeeee;
 	grid-column: 1 / -1;
 	grid-row: foot;
 	z-index: -1;
-}
+} */
+
+.flowbtn7{
+    border-radius:50%;
+    position:relative;
+    display:inline-block;
+    width:40px;
+    height:40px;
+    font-size:30px;
+    color:#fff!important;
+    text-decoration:none;
+    transition:.5s;			
+    }
+    /* アイコンをど真ん中に*/
+    .flowbtn7 i{
+    position:absolute;
+    top:50%;
+    left:50%;
+    -ms-transform:translate(-50%,-50%);
+    -webkit-transform:translate(-50%,-50%);
+    transform:translate(-50%,-50%);
+    }
+    /* ulタグの内側余白を０にする */
+    ul.snsbtniti{
+    padding:0!important;
+    }
+    /* ボタン全体の位置 */
+    .snsbtniti{
+    margin: 0 auto;
+    width: 80%;
+    display:flex;
+    /* flex-flow:row wrap; */
+    justify-content:space-around;
+    }
+    /* ボタン同士の余白 */
+    .snsbtniti li{
+    flex:0 0 33%;
+    text-align:center !important;
+    list-style: none;
+    }
+    /* ボタンにマウスを乗せた時 */
+    .flowbtn7:hover{
+    -webkit-transform:translateY(-5px);
+    -ms-transform:translateY(-5px);
+    transform:translateY(-5px);
+    }
+    /* Twitter */
+    .fl_tw7{
+    background:#666;
+    }
+  /* LINE */
+  .fl_li7{
+    background:#666;
+    }
+    /* Facebook */
+  .fl_fb7{
+    background:#666;
+    }
+  #sns-area{
+    display: flex;
+  }
 
 /* ------------------------------------------------------------------------------------------ */

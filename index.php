@@ -32,7 +32,9 @@ if($status==false) {
   while( $r = $stmt->fetch(PDO::FETCH_ASSOC)){
     $view .= '<div class="swiper-slide">';
     $view .= '<img class="new" src="home/contents//'.$r["c_code"].'/'.$r["c_file"].'">';
-    $view .= '<p>'.$r["name"].'</p>';
+    $view .= '<div class="swiper-slide_min">';
+    $view .= '<p class="company">'.$r["name"].'</p>';
+    $view .= '</div>';
     $view .= '</div>';
   }
 }
@@ -43,9 +45,10 @@ if($status==false) {
   while( $r_n = $stmt_n->fetch(PDO::FETCH_ASSOC)){
     $view_n .= '<div class="swiper-slide">';
     $view_n .= '<img class="new" src="home/news/'.$r_n["c_code"].'/'.$r_n["n_img"].'">';
-    $view_n .= '<p>'.$r_n["name"].'</p><br>';
+    $view_n .= '<div class="swiper-slide_min_n">';
+    $view_n .= '<p class="company">'.$r_n["name"].'</p><br>';
     $view_n .= '<p>'.$r_n["title"].'</p><br>';
-    $view_n .= '<p>'.$r_n["article"].'</p><br>';
+    $view_n .= '</div>';
     $view_n .= '</div>';
   }
 }
@@ -112,7 +115,7 @@ if($status==false) {
   <div class="intro_child1">
     <!-- <img class="logo" src="img/logo_backwhite.png"> -->
     <!-- <h1>てのひらストーリー</h1> -->
-    <p>QRを読み込んだら産地へひとっとび。モノにまつわるストーリーをお届けします。</p>
+    <p>QRを読み込んだら産地へひとっとび。モノにまつわるストーリーをお届けします。　|<a id="aboutus" href="aboutus.php">  もっと詳しく</a></p>
   </div>
   <div class="intro_child2">
     <p>出品者の方は</br>こちら</p>

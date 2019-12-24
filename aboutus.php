@@ -19,6 +19,7 @@ session_start();
        <!-- font-family: 'Noto Serif JP', serif;
         font-family: 'Noto Sans JP', sans-serif; -->
     <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="stylesheet" href="style_about.css">
     <title>手のひらストーリーって？</title>
 </head>
@@ -117,9 +118,25 @@ session_start();
     </section>
 </main>
 
+
+
+<!-- snsボタン -->
+<div class="sns_button">
+  <ul class="snsbtniti">
+    <div id="sns-area"></div>
+  </ul>
+</div>
+
 <!-- フッター領域（仮設置） -->
 <footer>
-    <span style="font-family: 'M PLUS Rounded 1c', sans-serif">©︎　手のひらストーリー</span>
+<a href="">利用規約 </a>
+<p> | </p>
+<a href="">個人情報保護方針 </a>
+<p> | </p>
+<a href="">ご利用にあたって </a>
+<p> | </p>
+<a href="">運営会社</a>
+
 </footer>
 
 <script src="http://maps.google.com/maps/api/js?key=AIzaSyCGPRERWKgyKDrfHWTZR-ospE2Ve_U4U58&language=ja"></script>    
@@ -148,6 +165,52 @@ function init() {
     info.open(map,marker);
 
 }
+
+// snsボタン
+// SNSボタンを追加するエリア
+var snsArea = document.getElementById('sns-area');
+ 
+// シェア時に使用する値
+var shareUrl = 'location.href'; // URL.現在のページURLを使用する場合 location.href;
+var shareText = '『手のひらストーリー』モノとヒトを繋げます。'; // 現在のページタイトルを使用する場合 document.title;
+ 
+generate_share_button(snsArea, shareUrl, shareText);
+ 
+// シェアボタンを生成する関数
+function generate_share_button(area, url, text) {
+    // シェアボタンの作成
+    var twBtn = document.createElement('div');
+    twBtn.className = 'twitter-btn';
+    var fbBtn = document.createElement('div');
+    fbBtn.className = 'facebook-btn';
+    var liBtn = document.createElement('div');
+    liBtn.className = 'line-btn';
+ 
+    // 各シェアボタンのリンク先
+    var twHref = 'https://twitter.com/share?text='+encodeURIComponent(text)+'&url='+encodeURIComponent(url);
+    var fbHref = 'http://www.facebook.com/share.php?u='+encodeURIComponent(url);
+    var liHref = 'https://line.me/R/msg/text/?'+encodeURIComponent(text)+' '+encodeURIComponent(url);
+ 
+    // シェアボタンにリンクを追加
+    var clickEv = 'onclick="popupWindow(this.href); return false;"';
+    var twLink = '<li><a class="flowbtn7 fl_tw7" href="' + twHref + '" ' + clickEv + '><i class="fab fa-twitter"></i></a></li>';
+    var fbLink = '<li><a class="flowbtn7 fl_fb7" href="' + fbHref + '" ' + clickEv + '><i class="fab fa-facebook-f"></a></li>';
+    var liLink = '<a class="flowbtn7 fl_li7" href="' + liHref + '" target="_blank"><i class="fab fa-line"></a></li>';
+    twBtn.innerHTML = twLink;
+    fbBtn.innerHTML = fbLink;
+    liBtn.innerHTML = liLink;
+ 
+    // シェアボタンを表示
+    area.appendChild(twBtn);
+    area.appendChild(fbBtn);
+    area.appendChild(liBtn);
+}
+ 
+// クリック時にポップアップで表示させる関数
+function popupWindow(url) {
+    window.open(url, '', 'width=580,height=400,menubar=no,toolbar=no,scrollbars=yes');
+}
+
 </script>
 
 </body>
