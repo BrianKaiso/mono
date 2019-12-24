@@ -12,6 +12,7 @@ object,
 iframe,
 h1,
 h2,
+h3,
 h4,
 h5,
 h6,
@@ -188,13 +189,10 @@ h1 {
   text-align: center;
 }
 
-/* h3 {
-  margin-bottom: 20px;
-  padding: 5px 0 3px;
+h3 {
+  margin-bottom: 3px;
   text-align: center;
-  width: 100vw;
-  height: auto;
-} */
+}
 
 /* section */
 section {
