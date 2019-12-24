@@ -35,7 +35,7 @@ foreach ($stmt_n as $r_n) {
 $view_n .="<img src=\"home/news/{$_GET["c_code"]}/{$r_n["n_img"]}\" />";
 
 // 生産者のDBより
-$stmt_s = $pdo->prepare("SELECT * FROM mst_creater WHERE c_code = $c_code");
+$stmt_s = $pdo->prepare("SELECT * FROM mst_intro WHERE c_code = $c_code");
 $status_s = $stmt_s->execute();
 foreach ($stmt_s as $r_s) {
 }
